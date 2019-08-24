@@ -18,7 +18,6 @@ public class asteroid_float : MonoBehaviour
         Vector3 mousepoint = Camera.main.ScreenToWorldPoint(mousepos);
         float x_velocity;
         float y_velocity;
-        print (mousepoint);
         if(mousepoint.x > transform.position.x){
             x_velocity = 2f;
         }
