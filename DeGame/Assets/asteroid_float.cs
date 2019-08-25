@@ -52,26 +52,35 @@ public class asteroid_float : MonoBehaviour
     {
         float x_velocity;
         float y_velocity;
+        float a = System.Math.Abs(transform.position.x);
+        float b = System.Math.Abs(transform.position.y);
+        float calc = (float)Math.Sqrt(a*a + b*b);
+
+
         if (centre.x > transform.position.x)
         {
-            x_velocity = 2f;
+            x_velocity = (a/calc)*2f;
         }
         else if (centre.x < transform.position.x)
         {
-            x_velocity = -2f;
+            x_velocity = (a / calc) *- 2f;
         }
         else
         {
             x_velocity = 0f;
         }
 
+
+
+
+
         if (centre.y > transform.position.y)
         {
-            y_velocity = 2f;
+            y_velocity = (b / calc)*2f;
         }
         else if (centre.y < transform.position.y)
         {
-            y_velocity = -2f;
+            y_velocity = (b / calc) *- 2f;
         }
         else
         {
