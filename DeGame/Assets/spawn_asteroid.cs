@@ -50,7 +50,7 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(rate);
+            yield return new WaitForSeconds(0.1f);
             spawnAsteroid();
         }
     }

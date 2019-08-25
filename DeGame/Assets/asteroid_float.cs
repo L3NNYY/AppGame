@@ -9,6 +9,7 @@ public class asteroid_float : MonoBehaviour
     Vector2 centre;
     Animator anim;
     CircleCollider2D collider;
+    private asteroid_float script;
     bool isMoving = true;
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,8 @@ public class asteroid_float : MonoBehaviour
         }
 
     }
-    void movement()
+
+    public void movement()
     {
         float x_velocity;
         float y_velocity;
