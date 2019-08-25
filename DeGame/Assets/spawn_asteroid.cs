@@ -6,7 +6,9 @@ using System;
 public class spawn_asteroid : MonoBehaviour
 {
     public GameObject asteroid;
-    readonly float rate = 0.5f;
+    public float rate = 0.5f;
+    float minimumScale = 0.03f;
+    float maximumScale = 0.07f;
     private Vector2 screenBounds;
 
     // Start is called before the first frame update
@@ -40,6 +42,8 @@ public class spawn_asteroid : MonoBehaviour
             spawn = new Vector2(UnityEngine.Random.Range(-screenBounds.x, screenBounds.x), -screenBounds.y*2);
         }
         ast.transform.position = spawn;
+        float size = UnityEngine.Random.Range(minimumScale, maximumScale);
+        ast.transform.localScale += new Vector3(size, size);
     }
 
 
@@ -50,7 +54,7 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(rate);
             spawnAsteroid();
         }
     }
