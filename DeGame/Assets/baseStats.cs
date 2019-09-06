@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class baseStats : MonoBehaviour
 {
@@ -17,10 +18,12 @@ public class baseStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (current_health == 0 && gameOver == false)
+        if (current_health <= 0 && gameOver == false)
         {
-            print("you lost, try again!");
             gameOver = true;
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("MenuScene");
+
         }
     }
     private void OnTriggerEnter2D(Collider2D col)
