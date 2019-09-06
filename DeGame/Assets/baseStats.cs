@@ -9,6 +9,7 @@ public class baseStats : MonoBehaviour
     private float current_health;
     public healthBar healthBarPlayer;
     private bool gameOver = false;
+    public GameObject deathScreen;
 
     void Start()
     {
@@ -22,9 +23,10 @@ public class baseStats : MonoBehaviour
         {
             gameOver = true;
             Time.timeScale = 0f;
-            SceneManager.LoadScene("MenuScene");
+            deathScreen.SetActive(true);
 
-        }
+
+}
     }
     private void OnTriggerEnter2D(Collider2D col)
     {

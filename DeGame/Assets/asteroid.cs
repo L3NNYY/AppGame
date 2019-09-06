@@ -9,7 +9,6 @@ public class asteroid : MonoBehaviour
     private Rigidbody2D rb;
     public Collider2D player_base;
     private CircleCollider2D circle;
-    private asteroid_float scriptA;
 
     void Start()
     {

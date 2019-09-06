@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
     bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject deathScreen;
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        deathScreen.SetActive(false);
         Time.timeScale = 1f;
     }
     void Update()
@@ -36,5 +39,11 @@ public class PauseMenuScript : MonoBehaviour
         GameIsPaused = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+    }
+    public void PlayAgain()
+    {
+        Resume();
+        SceneManager.LoadScene("SampleScene");
+        deathScreen.SetActive(false);
     }
 }
