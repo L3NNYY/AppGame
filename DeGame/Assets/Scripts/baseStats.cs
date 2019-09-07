@@ -22,9 +22,12 @@ public class baseStats : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        gameScore += 1;
-        scoreText.text = "" + gameScore/10;
+    {   
+        if(Time.timeScale != 0f){
+            gameScore += 1;
+            scoreText.text = "" + gameScore/10;
+        }
+
         if (current_health <= 0 && gameOver == false)
         {
             gameOver = true;
