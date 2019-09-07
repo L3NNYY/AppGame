@@ -6,7 +6,7 @@ public class ProgressScript : MonoBehaviour
 {
     public Text scoreText;
     public int gameScore = 0;
-    int fullScore = 0;
+    float fullScore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,8 @@ public class ProgressScript : MonoBehaviour
     void Update()
     {
         if(Time.timeScale != 0f){
-            fullScore += 1;
-            gameScore = fullScore/10;
+            fullScore += Time.deltaTime;
+            gameScore = (int) fullScore * 3;
             scoreText.text = "" + gameScore;
         }
     }

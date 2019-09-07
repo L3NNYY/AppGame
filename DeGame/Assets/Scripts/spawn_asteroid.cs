@@ -35,7 +35,6 @@ public class spawn_asteroid : MonoBehaviour
             level += 1;
             asteroidSpeed += 0.35f * level;
             rate = rate / level;
-            print(rate);
             print("Level: " + level);
         } 
         System.Random random = new System.Random();
@@ -70,7 +69,6 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
-            print(rate);
             yield return new WaitForSeconds(rate);
             spawnAsteroid();
         }
