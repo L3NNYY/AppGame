@@ -7,10 +7,12 @@ public class ProgressScript : MonoBehaviour
     public Text scoreText;
     public int gameScore = 0;
     float fullScore = 0;
+    public int testMultiplier = 1;
+    powerups powerups;
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerups = gameObject.GetComponent<powerups>();
     }
 
     // Update is called once per frame
@@ -18,8 +20,12 @@ public class ProgressScript : MonoBehaviour
     {
         if(Time.timeScale != 0f){
             fullScore += Time.deltaTime;
-            gameScore = (int) fullScore * 3;
+            gameScore = (int) fullScore * 3 * testMultiplier;
             scoreText.text = "" + gameScore;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)){ //Power up activation
+            powerups.nukePowerUp();
         }
     }
 }

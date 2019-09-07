@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidExplosion: {fileID: 0}
+  pauseMenuUI: {fileID: 0}
+  speed: 0
 --- !u!95 &1678885248550620579
 Animator:
   serializedVersion: 3
@@ -182,3 +184,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
+  pauseMenuUI: {fileID: 0}
+  speed: 0

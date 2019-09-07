@@ -1119,6 +1119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649533089}
   - component: {fileID: 649533090}
+  - component: {fileID: 649533091}
   m_Layer: 0
   m_Name: Game Wrapper
   m_TagString: Untagged
@@ -1159,6 +1160,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 509793873}
   gameScore: 0
+  testMultiplier: 15
+--- !u!114 &649533091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649533088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424d82a02dc9b6e4b9791a1fd111b87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
 --- !u!1001 &666306152
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -39,17 +39,20 @@ public class asteroid_float : MonoBehaviour
 
     }
 
-
-    void CollideChecker(Vector2 mousePoint)
-    {
-        if (collider.OverlapPoint(mousePoint))
-        {
-            if(isMoving){ //stops audio playing multiple times if clicking continues once destroyed
+    public void DestroyAsteroid(){
+        if(isMoving){ //stops audio playing multiple times if clicking continues once destroyed
                 AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
             }
             anim.SetTrigger("Active");
             isMoving = false;
             Destroy(this.gameObject, 1.0f);
+    }
+
+    void CollideChecker(Vector2 mousePoint)
+    {
+        if (collider.OverlapPoint(mousePoint))
+        {
+            DestroyAsteroid();
         }
 
     }
