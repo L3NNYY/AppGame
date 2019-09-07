@@ -16,6 +16,9 @@ public class PauseMenuScript : MonoBehaviour
     }
     void Update()
     {
+        if(deathScreen.active){
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)

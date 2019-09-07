@@ -11,7 +11,9 @@ public class asteroid_float : MonoBehaviour
     CircleCollider2D collider;
     public AudioClip asteroidExplosion;
     private asteroid_float script;
+    public GameObject pauseMenuUI;
     bool isMoving = true;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class asteroid_float : MonoBehaviour
         {
             movement();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
         {
             CollideChecker(mousePos);
         }
@@ -42,10 +44,12 @@ public class asteroid_float : MonoBehaviour
     {
         if (collider.OverlapPoint(mousePoint))
         {
+            if(isMoving){ //stops audio playing multiple times if clicking continues once destroyed
+                AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
+            }
             anim.SetTrigger("Active");
             isMoving = false;
             Destroy(this.gameObject, 1.0f);
-            AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
         }
 
     }
@@ -61,11 +65,11 @@ public class asteroid_float : MonoBehaviour
 
         if (centre.x > transform.position.x)
         {
-            x_velocity = (a/calc)*2f;
+            x_velocity = (a/calc) * speed;
         }
         else if (centre.x < transform.position.x)
         {
-            x_velocity = (a / calc) *- 2f;
+            x_velocity = (a / calc) *- speed;
         }
         else
         {
@@ -78,11 +82,11 @@ public class asteroid_float : MonoBehaviour
 
         if (centre.y > transform.position.y)
         {
-            y_velocity = (b / calc)*2f;
+            y_velocity = (b / calc) * speed;
         }
         else if (centre.y < transform.position.y)
         {
-            y_velocity = (b / calc) *- 2f;
+            y_velocity = (b / calc) *- speed;
         }
         else
         {

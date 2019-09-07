@@ -6,11 +6,14 @@ using System;
 public class spawn_asteroid : MonoBehaviour
 {
     public GameObject asteroid;
-    public float rate = 0.5f;
+    public GameObject progress;
+    float asteroidSpeed = 1.25f;
+    float rate = 2f;
     float minimumScale = 0.03f;
     float maximumScale = 0.07f;
     private Vector2 screenBounds;
-
+    int level = 1;
+    int oldScore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,18 @@ public class spawn_asteroid : MonoBehaviour
     {
         Vector2 spawn = new Vector2(0, 0);
         GameObject ast = Instantiate(asteroid) as GameObject;
+        asteroid_float astScript = ast.GetComponent<asteroid_float>();
+        ProgressScript prog = progress.GetComponent<ProgressScript>(); //Gets the game score from progress script
+        //TODO: this area will most likely simplify upon a major revamp, getting components together
+        //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
+        if(oldScore + 50 < prog.gameScore){
+            oldScore = prog.gameScore;
+            level += 1;
+            asteroidSpeed += 0.35f * level;
+            rate = rate / level;
+            print(rate);
+            print("Level: " + level);
+        } 
         System.Random random = new System.Random();
         int randomNumber = random.Next(1, 5);
         if (randomNumber == 1)
@@ -41,6 +56,7 @@ public class spawn_asteroid : MonoBehaviour
         {
             spawn = new Vector2(UnityEngine.Random.Range(-screenBounds.x, screenBounds.x), -screenBounds.y*2);
         }
+        astScript.speed = asteroidSpeed;
         ast.transform.position = spawn;
         float size = UnityEngine.Random.Range(minimumScale, maximumScale);
         ast.transform.localScale += new Vector3(size, size);
@@ -54,6 +70,7 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
+            print(rate);
             yield return new WaitForSeconds(rate);
             spawnAsteroid();
         }
