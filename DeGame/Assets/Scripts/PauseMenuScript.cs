@@ -43,7 +43,7 @@ public class PauseMenuScript : MonoBehaviour
     public void PlayAgain()
     {
         Resume();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
         deathScreen.SetActive(false);
     }
 }
