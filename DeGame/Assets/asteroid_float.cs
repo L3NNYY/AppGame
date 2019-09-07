@@ -9,6 +9,7 @@ public class asteroid_float : MonoBehaviour
     Vector2 centre;
     Animator anim;
     CircleCollider2D collider;
+    public AudioClip asteroidExplosion;
     private asteroid_float script;
     bool isMoving = true;
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class asteroid_float : MonoBehaviour
             anim.SetTrigger("Active");
             isMoving = false;
             Destroy(this.gameObject, 1.0f);
+            AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
         }
 
     }
