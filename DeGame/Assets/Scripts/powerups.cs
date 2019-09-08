@@ -10,7 +10,7 @@ public class powerups : MonoBehaviour
         print("nuke activated");
         bool audioPlayed = false;
         foreach (var asteroid in FindObjectsOfType(typeof(GameObject)) as GameObject[]) {
-            if(asteroid.name == "asteroid(Clone)"){
+            if(asteroid.name == "asteroid 1(Clone)" || asteroid.name == "asteroid 2(Clone)" || asteroid.name == "asteroid 3(Clone)" || asteroid.name == "asteroid 4(Clone)" || asteroid.name == "asteroid 5(Clone)"){
                 if(!audioPlayed){
                     audioPlayed = true;
                     AudioManager.instance.PlaySound(asteroidExplosion, transform.position);

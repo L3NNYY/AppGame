@@ -5,8 +5,10 @@ using System;
 
 public class spawn_asteroid : MonoBehaviour
 {
-    public GameObject asteroid;
+    public GameObject asteroid1, asteroid2, asteroid3, asteroid4, asteroid5;
     public GameObject progress;
+    public GameObject Asteroids; // Parent to store all asteroid prefabs
+    GameObject asteroid;
     float asteroidSpeed = 1.25f;
     float rate = 2f;
     float minimumScale = 0.03f;
@@ -24,8 +26,29 @@ public class spawn_asteroid : MonoBehaviour
     // Update is called once per frame
     private void spawnAsteroid()
     {
+        System.Random random = new System.Random();
+        int randomNumber = random.Next(1, 6);
+        switch (randomNumber)
+        {
+            case 1:
+                asteroid = asteroid1;
+                break;
+            case 2:
+                asteroid = asteroid2;
+                break;
+            case 3:
+                asteroid = asteroid3;
+                break;
+            case 4:
+                asteroid = asteroid4;
+                break;
+            case 5:
+                asteroid = asteroid5;
+                break;
+        }
         Vector2 spawn = new Vector2(0, 0);
         GameObject ast = Instantiate(asteroid) as GameObject;
+        ast.transform.parent = Asteroids.transform;
         asteroid_float astScript = ast.GetComponent<asteroid_float>();
         ProgressScript prog = progress.GetComponent<ProgressScript>(); //Gets the game score from progress script
         //TODO: this area will most likely simplify upon a major revamp, getting components together
@@ -37,8 +60,7 @@ public class spawn_asteroid : MonoBehaviour
             rate = rate / level;
             print("Level: " + level);
         } 
-        System.Random random = new System.Random();
-        int randomNumber = random.Next(1, 5);
+        randomNumber = random.Next(1, 5);
         if (randomNumber == 1)
         {
             spawn = new Vector2(screenBounds.x*2, UnityEngine.Random.Range(-screenBounds.y, screenBounds.y));
