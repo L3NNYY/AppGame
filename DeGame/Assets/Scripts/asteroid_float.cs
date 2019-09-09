@@ -65,8 +65,10 @@ public class asteroid_float : MonoBehaviour
         float a = System.Math.Abs(transform.position.x);
         float b = System.Math.Abs(transform.position.y);
         float calc = (float)Math.Sqrt(a*a + b*b);
-        transform.Rotate(0, 0, 1, Space.Self);
-        
+        if (Time.timeScale != 0f)
+        {
+            transform.Rotate(0, 0, 1, Space.Self);
+        }
         if (centre.x > transform.position.x)
         {
             x_velocity = (a/calc) * speed;
