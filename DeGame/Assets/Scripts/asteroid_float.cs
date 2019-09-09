@@ -40,12 +40,13 @@ public class asteroid_float : MonoBehaviour
     }
 
     public void DestroyAsteroid(){
-        if(isMoving){ //stops audio playing multiple times if clicking continues once destroyed
-                AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
-            }
-            anim.SetTrigger("Active");
-            isMoving = false;
-            Destroy(this.gameObject, 1.0f);
+        if (isMoving){ //stops audio playing multiple times if clicking continues once destroyed
+            AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
+        }
+        transform.Rotate(0, 0, 0, Space.Self);
+        anim.SetTrigger("Active");
+        isMoving = false;
+        Destroy(this.gameObject, 1.0f);
     }
 
     void CollideChecker(Vector2 mousePoint)
@@ -64,8 +65,8 @@ public class asteroid_float : MonoBehaviour
         float a = System.Math.Abs(transform.position.x);
         float b = System.Math.Abs(transform.position.y);
         float calc = (float)Math.Sqrt(a*a + b*b);
-
-
+        transform.Rotate(0, 0, 1, Space.Self);
+        
         if (centre.x > transform.position.x)
         {
             x_velocity = (a/calc) * speed;
@@ -95,7 +96,7 @@ public class asteroid_float : MonoBehaviour
         {
             y_velocity = 0f;
         }
-        transform.Translate(x_velocity * Time.deltaTime, y_velocity * Time.deltaTime, 0f);
+        transform.Translate(x_velocity * Time.deltaTime, y_velocity * Time.deltaTime, 0f, Space.World);
     }
 }
  

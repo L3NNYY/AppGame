@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3160933290629715503}
   - component: {fileID: 2920379998271770201}
-  - component: {fileID: 5972732761814174375}
   - component: {fileID: 8979801741623845792}
   - component: {fileID: 828384365073856509}
   - component: {fileID: 4615802187329913559}
@@ -86,21 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5972732761814174375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5771442413573571921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245be05697fc07a48aead250bfba16cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroidExplosion: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
-  speed: 0
 --- !u!95 &8979801741623845792
 Animator:
   serializedVersion: 3

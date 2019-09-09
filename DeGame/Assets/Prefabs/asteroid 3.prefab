@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8300800810740527581}
   - component: {fileID: 1102641005398304770}
-  - component: {fileID: 6929613683957711727}
   - component: {fileID: 3145079283696989759}
   - component: {fileID: 4636503823040638966}
   - component: {fileID: 7761629178978715866}
   - component: {fileID: 743445208754953625}
   - component: {fileID: 2657493271987871699}
   m_Layer: 0
-  m_Name: asteroid 3 (brown)
+  m_Name: asteroid 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,21 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6929613683957711727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4284589311022839651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245be05697fc07a48aead250bfba16cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroidExplosion: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
-  speed: 0
 --- !u!95 &3145079283696989759
 Animator:
   serializedVersion: 3
