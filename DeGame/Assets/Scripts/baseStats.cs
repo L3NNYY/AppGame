@@ -10,6 +10,7 @@ public class baseStats : MonoBehaviour
     public healthBar healthBarPlayer;
     private bool gameOver = false;
     public GameObject deathScreen;
+    public GameObject onScreenUI;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class baseStats : MonoBehaviour
             gameOver = true;
             Time.timeScale = 0f;
             deathScreen.SetActive(true);
+            onScreenUI.SetActive(false);
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D col)
