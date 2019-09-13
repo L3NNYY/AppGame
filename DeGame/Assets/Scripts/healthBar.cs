@@ -22,6 +22,7 @@ public class healthBar : MonoBehaviour
     // Update is called once per frame
     public void setSize(float setFillAmount)
     {
-        health.fillAmount = setFillAmount;
+        bar.localScale = new Vector2(size, 1f);
+
     }
 }
