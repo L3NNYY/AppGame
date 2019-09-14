@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbc84f1ec648e140aca39c2755eabb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowTimeAnim: {fileID: 9100000, guid: a6ebaf9427b2e5d498a73d4de76e9d5d, type: 2}
+  nukeAnim: {fileID: 9100000, guid: a6ebaf9427b2e5d498a73d4de76e9d5d, type: 2}
 --- !u!58 &8611491649029586495
 CircleCollider2D:
   m_ObjectHideFlags: 0

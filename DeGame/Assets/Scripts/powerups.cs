@@ -32,9 +32,8 @@ public class powerups : MonoBehaviour
         bool audioPlayed = false;
         foreach (var asteroid in FindObjectsOfType(typeof(GameObject)) as GameObject[])
         {
-            if (asteroid.name == "asteroid 1(Clone)" || asteroid.name == "asteroid 2(Clone)" ||
-             asteroid.name == "asteroid 3(Clone)" || asteroid.name == "asteroid 4(Clone)" ||
-              asteroid.name == "asteroid 5(Clone)")
+            if (asteroid.tag == "Enemy")  //
+            //if (asteroid.name == "asteroid(Clone)")
             {
                 if (!audioPlayed)
                 {
@@ -48,7 +47,7 @@ public class powerups : MonoBehaviour
     }
 
     public void slowDownTime(GameObject activatorObj){
-        print("Slow Down Time Activated")
+        print("Slow Down Time Activated");
         Destroy(activatorObj);
         powerup = true;
         time = 0f;
