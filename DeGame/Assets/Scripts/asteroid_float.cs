@@ -29,7 +29,7 @@ public class asteroid_float : MonoBehaviour
         {
             movement();
         }
-        if (click.collideChecker(collider))
+        if (click.collideChecker(collider, 5))
         {
             DestroyAsteroid();
         }

@@ -153,8 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa342439a16aab3459bb8a41ec930993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_base: {fileID: 0}
-  earthExplosion: {fileID: 8300000, guid: 8db354c9492834b48aab20babdb1ec5a, type: 3}
+  earthExplosion: {fileID: 8300000, guid: e0190b1dfeb1f36448b1b2e0f3bd1f48, type: 3}
 --- !u!114 &4229262807920427038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,5 +167,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
-  pauseMenuUI: {fileID: 0}
   speed: 0

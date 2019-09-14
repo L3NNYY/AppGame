@@ -23,7 +23,7 @@ public class shooting_star : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (click.collideChecker(collider))
+        if (click.collideChecker(collider, 30))
         {
             powerups.nukePowerUp(this.gameObject);
         }

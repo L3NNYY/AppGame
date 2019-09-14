@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ecb1dbadcb31949b7b2b7e00c062df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earthExplosion: {fileID: 8300000, guid: e0190b1dfeb1f36448b1b2e0f3bd1f48, type: 3}
   godmode: 0
   deathScreen: {fileID: 114464131}
   onScreenUI: {fileID: 1800040965}
@@ -922,7 +923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.025024414, y: -0.024993896}
+  m_AnchoredPosition: {x: 0.025024414, y: -0.025024414}
   m_SizeDelta: {x: -0.050049, y: -0.050018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458783892
@@ -1300,8 +1301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 509793873}
-  gameScore: 0
+  secondsPassed: 0
   testMultiplier: 1
+  gameScore: 0
 --- !u!114 &649533091
 MonoBehaviour:
   m_ObjectHideFlags: 0

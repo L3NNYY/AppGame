@@ -7,7 +7,6 @@ public class asteroid : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb;
-    public AudioClip earthExplosion;
     private CircleCollider2D circle;
 
     void Start()
@@ -22,11 +21,7 @@ public class asteroid : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Planet"))
-        {
-            Destroy(gameObject);
-            AudioManager.instance.PlaySound(earthExplosion, transform.position);
-        }
+        //Collision will be done here for other items
     }
 
 }

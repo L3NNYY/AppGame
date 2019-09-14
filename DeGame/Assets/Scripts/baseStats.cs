@@ -7,10 +7,17 @@ public class baseStats : MonoBehaviour
 {
     private float current_health;
     private bool gameOver = false;
+    public AudioClip earthExplosion;
     public bool godmode;
+    static Vector2 originalScale;
+    float damageTime;
+    bool hitAnimEnding;
     public GameObject deathScreen;
     public GameObject onScreenUI;
 
+    void Start(){
+        originalScale = transform.localScale;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +27,18 @@ public class baseStats : MonoBehaviour
             Time.timeScale = 0f;
             deathScreen.SetActive(true);
             onScreenUI.SetActive(false);
-            
+        }  
+        if(damageTime > 0){
+            damageTime -= Time.deltaTime * 7;
+            if(hitAnimEnding){
+            transform.localScale = Vector2.Lerp(originalScale,originalScale*1.3f, damageTime);
+            }else{
+            transform.localScale = Vector2.Lerp(originalScale*1.3f,originalScale, damageTime);
+            }
+            if(damageTime <= 0 && !hitAnimEnding){
+                hitAnimEnding = true;
+                damageTime = 1f;
+            }
         }
     }
     
@@ -28,7 +46,11 @@ public class baseStats : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Enemy") && !godmode)
         {
-             HealthBarScript.health -= 5;
+            damageTime = 1f;
+            hitAnimEnding = false;
+            Destroy(col.gameObject);
+            HealthBarScript.health -= 5;
+            AudioManager.instance.PlaySound(earthExplosion, transform.position);
         }
     }
 }

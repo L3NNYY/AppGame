@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class ProgressScript : MonoBehaviour
 {
     public Text scoreText;
-    public int gameScore = 0;
-    float fullScore = 0;
+    public int secondsPassed = 0;
+    float secondsScore = 0;
     public int testMultiplier = 1;
+
+    public int gameScore;
     powerups powerups;
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,17 @@ public class ProgressScript : MonoBehaviour
     void Update()
     {
         if(Time.timeScale != 0f){
-            fullScore += Time.deltaTime;
-            gameScore = (int) fullScore * 3 * testMultiplier;
+            secondsScore += Time.deltaTime;
+            secondsPassed = (int) secondsScore * testMultiplier;
             scoreText.text = "" + gameScore;
         }
 
         if (Input.GetKeyDown(KeyCode.P)){ //Power up activation
             powerups.nukePowerUp(null);
         }
+    }
+
+    public void addScore(int value){
+        gameScore += value;
     }
 }

@@ -52,8 +52,8 @@ public class spawn_asteroid : MonoBehaviour
         ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
         //TODO: this area will most likely simplify upon a major revamp, getting components together
         //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
-        if(oldScore + 50 < prog.gameScore){
-            oldScore = prog.gameScore;
+        if(oldScore + 20 < prog.secondsPassed){
+            oldScore = prog.secondsPassed;
             level += 1;
             asteroidSpeed += 0.35f * level;
             rate = rate / level;
