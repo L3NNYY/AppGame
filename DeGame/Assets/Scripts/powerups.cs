@@ -5,20 +5,28 @@ using UnityEngine;
 public class powerups : MonoBehaviour
 {
     public AudioClip asteroidExplosion;
-    bool nukeactive = false;
+    bool powerup = false;
+    float time, prevTime = 0f;
     bool flashing = true;
+    bool flashActive = false;
     // Update is called once per frame
     void Update()
     {
-        if (nukeactive)
+        time += Time.deltaTime;
+        if (flashActive)
         {
             flash();
+        }
+        if(time > 2f && powerup){
+            Time.timeScale = 1f;
+            powerup = false;
         }
     }
     public void nukePowerUp(GameObject activatorObj)
     {
         Destroy(activatorObj);
-        nukeactive = true;
+        powerup = true;
+        flashActive = true;
         flashing = true;
         print("nuke activated");
         bool audioPlayed = false;
@@ -38,6 +46,17 @@ public class powerups : MonoBehaviour
             }
         }
     }
+
+    public void slowDownTime(GameObject activatorObj){
+        print("Slow Down Time Activated")
+        Destroy(activatorObj);
+        powerup = true;
+        time = 0f;
+        flashActive = true;
+        flashing = true;
+        Time.timeScale = 0.3f;
+    }
+
     void flash()
     {
         GameObject whiteObj = GameObject.Find("white-screen");
@@ -58,7 +77,7 @@ public class powerups : MonoBehaviour
             if (whiteScreen.color.a <= 0.05)
             {
                 whiteScreen.color = Transparent;
-                nukeactive = false;
+                flashActive = false;
             }
         }
 

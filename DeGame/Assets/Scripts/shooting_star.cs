@@ -9,9 +9,11 @@ public class shooting_star : MonoBehaviour
     CircleCollider2D collider;
     ClickController click;
     powerups powerups;
+    System.Random random;
     // Start is called before the first frame update
     void Start()
     {
+        random = new System.Random();
         click = gameObject.AddComponent<ClickController>();
         float y_loc = Random.Range(-3.0f, 3.0f);
         transform.position = new Vector2(-12.64f, y_loc);
@@ -25,7 +27,16 @@ public class shooting_star : MonoBehaviour
     {
         if (click.collideChecker(collider, 30))
         {
-            powerups.nukePowerUp(this.gameObject);
+            int whichPowerup = random.Next(1,3);
+            switch(whichPowerup){
+                case 1:
+                powerups.slowDownTime(this.gameObject);
+                break;
+                case 2:
+                powerups.nukePowerUp(this.gameObject);
+                break;
+            }
+            
         }
         
         transform.Translate(4f * Time.deltaTime, 0, 0f, Space.World);
