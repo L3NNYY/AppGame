@@ -15,8 +15,9 @@ public class powerups : MonoBehaviour
             flash();
         }
     }
-    public void nukePowerUp()
+    public void nukePowerUp(GameObject activatorObj)
     {
+        Destroy(activatorObj);
         nukeactive = true;
         flashing = true;
         print("nuke activated");

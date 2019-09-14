@@ -5,18 +5,18 @@ using System;
 
 public class asteroid_float : MonoBehaviour
 {
-    Vector2 mousePos;
+
     Vector2 centre;
     Animator anim;
     CircleCollider2D collider;
+    ClickController click;
     public AudioClip asteroidExplosion;
-    private asteroid_float script;
-    public GameObject pauseMenuUI;
     bool isMoving = true;
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
+        click = gameObject.AddComponent<ClickController>();
         collider = gameObject.GetComponent<CircleCollider2D>();
         anim = gameObject.GetComponent<Animator>();
         centre = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z));
@@ -25,16 +25,13 @@ public class asteroid_float : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // print(centre);
-        //print(mousePos);
         if (isMoving)
         {
             movement();
         }
-        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
+        if (click.collideChecker(collider))
         {
-            CollideChecker(mousePos);
+            DestroyAsteroid();
         }
 
     }
@@ -49,14 +46,6 @@ public class asteroid_float : MonoBehaviour
         Destroy(this.gameObject, 1.0f);
     }
 
-    void CollideChecker(Vector2 mousePoint)
-    {
-        if (collider.OverlapPoint(mousePoint))
-        {
-            DestroyAsteroid();
-        }
-
-    }
 
     public void movement()
     {

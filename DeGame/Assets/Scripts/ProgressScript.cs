@@ -25,7 +25,7 @@ public class ProgressScript : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.P)){ //Power up activation
-            powerups.nukePowerUp();
+            powerups.nukePowerUp(null);
         }
     }
 }

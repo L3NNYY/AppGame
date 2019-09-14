@@ -6,7 +6,6 @@ using System;
 public class spawn_asteroid : MonoBehaviour
 {
     public GameObject asteroid1, asteroid2, asteroid3, asteroid4, asteroid5;
-    public GameObject progress;
     public GameObject Asteroids; // Parent to store all asteroid prefabs
     GameObject asteroid;
     float asteroidSpeed = 1.25f;
@@ -50,7 +49,7 @@ public class spawn_asteroid : MonoBehaviour
         GameObject ast = Instantiate(asteroid) as GameObject;
         ast.transform.parent = Asteroids.transform;
         asteroid_float astScript = ast.GetComponent<asteroid_float>();
-        ProgressScript prog = progress.GetComponent<ProgressScript>(); //Gets the game score from progress script
+        ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
         //TODO: this area will most likely simplify upon a major revamp, getting components together
         //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
         if(oldScore + 50 < prog.gameScore){

@@ -7,12 +7,14 @@ public class shooting_star : MonoBehaviour
     Animator anim;
     Vector2 mousePos;
     CircleCollider2D collider;
+    ClickController click;
     powerups powerups;
     // Start is called before the first frame update
     void Start()
     {
-        float y_loc = Random.Range(-3.0f,3.0f);
-        transform.position = new Vector2(-12.64f,y_loc);
+        click = gameObject.AddComponent<ClickController>();
+        float y_loc = Random.Range(-3.0f, 3.0f);
+        transform.position = new Vector2(-12.64f, y_loc);
         anim = gameObject.GetComponent<Animator>();
         collider = gameObject.GetComponent<CircleCollider2D>();
         powerups = GameObject.Find("Game Wrapper").GetComponent<powerups>();
@@ -21,18 +23,15 @@ public class shooting_star : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0))
+        if (click.collideChecker(collider))
         {
-            if (collider.OverlapPoint(mousePos))
-            {
-                powerups.nukePowerUp();
-                Destroy(this.gameObject);
-            }
+            powerups.nukePowerUp(this.gameObject);
         }
+        
         transform.Translate(4f * Time.deltaTime, 0, 0f, Space.World);
 
-        if(transform.position.x > 22f){ //destroyed once out of map
+        if (transform.position.x > 22f) //destroyed once out of map
+        { 
             Destroy(this.gameObject);
         }
     }

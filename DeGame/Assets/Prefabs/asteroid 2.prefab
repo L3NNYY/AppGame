@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6154707226959653752}
   - component: {fileID: 6154707226959653755}
   - component: {fileID: 8688618773817272002}
-  - component: {fileID: -483250307288920330}
   m_Layer: 0
   m_Name: asteroid 2
   m_TagString: Enemy
@@ -171,15 +170,3 @@ MonoBehaviour:
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
   pauseMenuUI: {fileID: 0}
   speed: 0
---- !u!114 &-483250307288920330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154707226959653745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff496aec9990cb34884b6501b1c35160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

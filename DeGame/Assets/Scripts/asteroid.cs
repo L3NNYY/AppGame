@@ -7,7 +7,6 @@ public class asteroid : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb;
-    public Collider2D player_base;
     public AudioClip earthExplosion;
     private CircleCollider2D circle;
 
