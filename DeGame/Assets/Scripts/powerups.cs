@@ -48,7 +48,7 @@ public class powerups : MonoBehaviour
     }
 
     public void slowDownTime(GameObject activatorObj){
-        print("Slow Down Time Activated")
+        print("Slow Down Time Activated");
         Destroy(activatorObj);
         powerup = true;
         time = 0f;
