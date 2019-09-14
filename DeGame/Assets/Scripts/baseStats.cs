@@ -7,7 +7,7 @@ public class baseStats : MonoBehaviour
 {
     public float max_health = 100;
     private float current_health;
-    public healthBar healthBarPlayer;
+    //public healthBar healthBarPlayer;
     private bool gameOver = false;
     public GameObject deathScreen;
     public GameObject onScreenUI;
@@ -30,6 +30,7 @@ public class baseStats : MonoBehaviour
             
         }
     }
+    /*
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag.Equals("Enemy") && current_health > 0)
@@ -40,4 +41,5 @@ public class baseStats : MonoBehaviour
             //print("You're on: " + current_health + " health points!");
         }
     }
+    */
 }
