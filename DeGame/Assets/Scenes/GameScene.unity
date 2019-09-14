@@ -1346,6 +1346,14 @@ MonoBehaviour:
   asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}
   Asteroids: {fileID: 970131219}
+  spriteList:
+  - {fileID: 21300000, guid: 762622004eb05ab4495d9c45e2d84e49, type: 3}
+  - {fileID: 21300000, guid: 81e899ceb82ff0547aaba63447461c6b, type: 3}
+  - {fileID: 21300000, guid: b207324569c146640a0e4cc0e5e378fa, type: 3}
+  - {fileID: 21300000, guid: 29a39b8ad85585e43a24ef8e9c665a3a, type: 3}
+  - {fileID: 21300000, guid: 87ba91ab1f1b94444b28c45d258c87c6, type: 3}
+  sprite1: {fileID: 21300000, guid: 762622004eb05ab4495d9c45e2d84e49, type: 3}
+  sprite2: {fileID: 21300000, guid: 81e899ceb82ff0547aaba63447461c6b, type: 3}
 --- !u!1001 &666306152
 PrefabInstance:
   m_ObjectHideFlags: 0

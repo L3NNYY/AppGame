@@ -15,8 +15,8 @@ public class spawn_asteroid : MonoBehaviour
     int level = 1;
     int oldScore = 0;
     System.Random random = new System.Random();
-    private readonly Color[] colors = { new Color(0, 0, 1, 1), new Color(0, 1, 0, 1), new Color(1, 0, 0, 1), new Color(203, 97, 136, 255), new Color(72, 1, 0, 255) }; //aray with different colours
-    //public Color[] colors = { new Color(), new Color(), new Color(), new Color(), new Color()};
+    public Sprite[] spriteList;
+    public Sprite sprite1, sprite2;
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -25,12 +25,9 @@ public class spawn_asteroid : MonoBehaviour
 
     private void spawnAsteroid()
     {
-        SpriteRenderer renderer;
         int randomNumber = random.Next(0, 5);
+        asteroidPrefab.GetComponent<SpriteRenderer>().sprite = spriteList[randomNumber];
         GameObject ast = Instantiate(asteroidPrefab) as GameObject;
-        renderer = ast.GetComponent<SpriteRenderer>();
-        renderer.color =  colors[randomNumber];
-
 
         Vector2 spawn = new Vector2(0, 0);
         ast.transform.parent = Asteroids.transform;
