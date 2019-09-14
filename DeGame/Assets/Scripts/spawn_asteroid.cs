@@ -5,9 +5,8 @@ using System;
 
 public class spawn_asteroid : MonoBehaviour
 {
-    public GameObject asteroid1, asteroid2, asteroid3, asteroid4, asteroid5;
+    public GameObject asteroidPrefab;
     public GameObject Asteroids; // Parent to store all asteroid prefabs
-    GameObject asteroid;
     float asteroidSpeed = 1.25f;
     float rate = 2f;
     float minimumScale = 0.03f;
@@ -15,38 +14,25 @@ public class spawn_asteroid : MonoBehaviour
     private Vector2 screenBounds;
     int level = 1;
     int oldScore = 0;
-    // Start is called before the first frame update
+    System.Random random = new System.Random();
+    private readonly Color[] colors = { new Color(0, 0, 1, 1), new Color(0, 1, 0, 1), new Color(1, 0, 0, 1), new Color(203, 97, 136, 255), new Color(72, 1, 0, 255) }; //aray with different colours
+    //public Color[] colors = { new Color(), new Color(), new Color(), new Color(), new Color()};
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         StartCoroutine(SpawnMultiple());
     }
 
-    // Update is called once per frame
     private void spawnAsteroid()
     {
-        System.Random random = new System.Random();
-        int randomNumber = random.Next(1, 6);
-        switch (randomNumber)
-        {
-            case 1:
-                asteroid = asteroid1;
-                break;
-            case 2:
-                asteroid = asteroid2;
-                break;
-            case 3:
-                asteroid = asteroid3;
-                break;
-            case 4:
-                asteroid = asteroid4;
-                break;
-            case 5:
-                asteroid = asteroid5;
-                break;
-        }
+        SpriteRenderer renderer;
+        int randomNumber = random.Next(0, 5);
+        GameObject ast = Instantiate(asteroidPrefab) as GameObject;
+        renderer = ast.GetComponent<SpriteRenderer>();
+        renderer.color =  colors[randomNumber];
+
+
         Vector2 spawn = new Vector2(0, 0);
-        GameObject ast = Instantiate(asteroid) as GameObject;
         ast.transform.parent = Asteroids.transform;
         asteroid_float astScript = ast.GetComponent<asteroid_float>();
         ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script

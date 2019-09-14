@@ -19,7 +19,7 @@ public class spawn_manager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(2);
             spawnPowerUp();
         }
     }

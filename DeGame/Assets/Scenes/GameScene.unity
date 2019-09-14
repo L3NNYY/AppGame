@@ -1343,15 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318e9cb8fc1b4db4b843ac4ce4a3b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroid1: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
-    type: 3}
-  asteroid2: {fileID: 6154707226959653745, guid: 44a57844bd8cac04ea0d78ee27e12f2c,
-    type: 3}
-  asteroid3: {fileID: 4284589311022839651, guid: 0fc7cbd5e9fdd9e46a6731af84cae8f1,
-    type: 3}
-  asteroid4: {fileID: 4644231657256063663, guid: 6e0b34373dff94441a5ad976d713650c,
-    type: 3}
-  asteroid5: {fileID: 5771442413573571921, guid: ac83feb633012564db07dbd386b36a36,
+  asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}
   Asteroids: {fileID: 970131219}
 --- !u!1001 &666306152
