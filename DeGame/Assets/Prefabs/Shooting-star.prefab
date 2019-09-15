@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8611491649029586433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.64, y: 2.81, z: 0}
-  m_LocalScale: {x: 2.7291071, y: 2.672172, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbc84f1ec648e140aca39c2755eabb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowTimeAnim: {fileID: 9100000, guid: a6ebaf9427b2e5d498a73d4de76e9d5d, type: 2}
-  nukeAnim: {fileID: 9100000, guid: a6ebaf9427b2e5d498a73d4de76e9d5d, type: 2}
+  slowTimeAnim: {fileID: 9100000, guid: 440160f7bf8e0ab458e894387360168f, type: 2}
+  nukeAnim: {fileID: 9100000, guid: 8cee3581d2045a1499f075f8632ff4e7, type: 2}
 --- !u!58 &8611491649029586495
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,4 +131,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.34, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.19
