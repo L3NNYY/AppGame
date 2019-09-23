@@ -7,14 +7,14 @@ public class asteroid_float : MonoBehaviour
 {
 
     Vector2 centre;
-    Animator anim;
-    CircleCollider2D collider;
-    ClickController click;
+    protected Animator anim;
+    protected CircleCollider2D collider;
+    protected ClickController click;
     public AudioClip asteroidExplosion;
-    bool isMoving = true;
+    protected bool isMoving = true;
     public float speed;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         click = gameObject.AddComponent<ClickController>();
         collider = gameObject.GetComponent<CircleCollider2D>();
@@ -23,7 +23,7 @@ public class asteroid_float : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isMoving)
         {
@@ -44,6 +44,7 @@ public class asteroid_float : MonoBehaviour
         anim.SetTrigger("Active");
         isMoving = false;
         Destroy(this.gameObject, 1.0f);
+        print("test");
     }
 
 

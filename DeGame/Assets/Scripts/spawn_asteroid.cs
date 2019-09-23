@@ -6,6 +6,7 @@ using System;
 public class spawn_asteroid : MonoBehaviour
 {
     public GameObject asteroidPrefab;
+    public GameObject threeHitAsteroidPrefab;
     public GameObject Asteroids; // Parent to store all asteroid prefabs
     float asteroidSpeed = 1.25f;
     float rate = 2f;
@@ -25,23 +26,37 @@ public class spawn_asteroid : MonoBehaviour
 
     private void spawnAsteroid()
     {
-        int randomNumber = random.Next(0, 5);
-        asteroidPrefab.GetComponent<SpriteRenderer>().sprite = spriteList[randomNumber];
-        GameObject ast = Instantiate(asteroidPrefab) as GameObject;
+        int chooseType = random.Next(1, 11);
+        int randomNumber;
+        GameObject ast;
+        if (chooseType == 1)
+        {
 
-        Vector2 spawn = new Vector2(0, 0);
-        ast.transform.parent = Asteroids.transform;
-        asteroid_float astScript = ast.GetComponent<asteroid_float>();
-        ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
-        //TODO: this area will most likely simplify upon a major revamp, getting components together
-        //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
-        if(oldScore + 20 < prog.secondsPassed){
-            oldScore = prog.secondsPassed;
-            level += 1;
-            asteroidSpeed += 0.35f * level;
-            rate = rate / level;
-            print("Level: " + level);
-        } 
+            ast = Instantiate(threeHitAsteroidPrefab) as GameObject;
+        }
+        else
+        {
+            randomNumber = random.Next(0, 5);
+            asteroidPrefab.GetComponent<SpriteRenderer>().sprite = spriteList[randomNumber];
+            ast = Instantiate(asteroidPrefab) as GameObject;
+        }
+
+
+            Vector2 spawn = new Vector2(0, 0);
+            ast.transform.parent = Asteroids.transform;
+            asteroid_float astScript = ast.GetComponent<asteroid_float>();
+            ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
+                                                                             //TODO: this area will most likely simplify upon a major revamp, getting components together
+                                                                             //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
+            if (oldScore + 20 < prog.secondsPassed)
+            {
+                oldScore = prog.secondsPassed;
+                level += 1;
+                asteroidSpeed += 0.35f * level;
+                rate = rate / level;
+                print("Level: " + level);
+            }
+        
         randomNumber = random.Next(1, 5);
         if (randomNumber == 1)
         {

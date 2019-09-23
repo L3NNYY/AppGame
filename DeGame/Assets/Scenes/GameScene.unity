@@ -867,6 +867,16 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_Color.a
@@ -897,16 +907,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6f7c028dfef854a824a96431c40743, type: 3}
@@ -1494,6 +1494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}
+  threeHitAsteroidPrefab: {fileID: 4762693616166160910, guid: d504da992ed7be54bb1f94ac2c01962b,
+    type: 3}
   Asteroids: {fileID: 970131219}
   spriteList:
   - {fileID: 21300000, guid: 762622004eb05ab4495d9c45e2d84e49, type: 3}
@@ -1675,11 +1677,6 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1689,6 +1686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6f7c028dfef854a824a96431c40743, type: 3}
@@ -1969,11 +1971,6 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1983,6 +1980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6f7c028dfef854a824a96431c40743, type: 3}
