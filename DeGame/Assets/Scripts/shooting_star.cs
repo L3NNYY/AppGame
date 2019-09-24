@@ -22,7 +22,7 @@ public class shooting_star : MonoBehaviour
     Animator animator;
 
     public Vector2 destination;
-    public float speed = 1f;
+    float speed = 6f;
     public string startingPos;
 
     void Start()

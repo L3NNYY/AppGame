@@ -9,7 +9,7 @@ public class baseStats : MonoBehaviour
     private bool gameOver = false;
     public AudioClip earthExplosion;
     public bool godmode;
-    static Vector3 originalScale;
+    static Vector3 originalScale, largeScale;
     float damageTime;
     bool hitAnimEnding;
     public GameObject deathScreen;
@@ -17,6 +17,8 @@ public class baseStats : MonoBehaviour
 
     void Start(){
         originalScale = transform.localScale;
+        largeScale = transform.localScale * 1.3f;
+        print(originalScale);
     }
     // Update is called once per frame
     void Update()
@@ -31,9 +33,9 @@ public class baseStats : MonoBehaviour
         if(damageTime > 0){
             damageTime -= Time.deltaTime * 7;
             if(hitAnimEnding){
-            transform.localScale = Vector3.Lerp(originalScale,originalScale*1.3f, damageTime);
+                transform.localScale = Vector3.Lerp(originalScale,largeScale, damageTime);
             }else{
-            transform.localScale = Vector3.Lerp(originalScale*1.3f,originalScale, damageTime);
+                transform.localScale = Vector3.Lerp(largeScale,originalScale, damageTime);
             }
             if(damageTime <= 0 && !hitAnimEnding){
                 hitAnimEnding = true;
