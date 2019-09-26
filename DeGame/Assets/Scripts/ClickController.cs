@@ -13,11 +13,12 @@ public class ClickController : MonoBehaviour
     }
     public bool collideChecker(CircleCollider2D objectCollider, int points){
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
         {
-            if (objectCollider.OverlapPoint(mousePos)){
-                progress.addScore(points);
-                return true;
+                if (objectCollider.OverlapPoint(mousePos)) {
+                    progress.addScore(points);
+                    return true;
             }
         }
         return false;
