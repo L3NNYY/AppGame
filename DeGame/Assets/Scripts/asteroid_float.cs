@@ -29,15 +29,23 @@ public class asteroid_float : MonoBehaviour
         {
             movement();
         }
-        if (click.collideChecker(collider, 5))
+        if (this.gameObject.tag.Equals("Enemy"))
         {
-            DestroyAsteroid();
+            if (click.collideChecker(collider, 5))
+            {
+                this.gameObject.tag = "Animation";
+                DestroyAsteroid();
+                print("phase 2");
+            }
+            
         }
 
     }
 
-    public void DestroyAsteroid(){
-        if (isMoving){ //stops audio playing multiple times if clicking continues once destroyed
+    public void DestroyAsteroid()
+    {
+        if (isMoving)
+        { //stops audio playing multiple times if clicking continues once destroyed
             AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
         }
         transform.Rotate(0, 0, 0, Space.Self);
@@ -54,18 +62,18 @@ public class asteroid_float : MonoBehaviour
         float y_velocity;
         float a = System.Math.Abs(transform.position.x);
         float b = System.Math.Abs(transform.position.y);
-        float calc = (float)Math.Sqrt(a*a + b*b);
+        float calc = (float)Math.Sqrt(a * a + b * b);
         if (Time.timeScale != 0f)
         {
             transform.Rotate(0, 0, 1, Space.Self);
         }
         if (centre.x > transform.position.x)
         {
-            x_velocity = (a/calc) * speed;
+            x_velocity = (a / calc) * speed;
         }
         else if (centre.x < transform.position.x)
         {
-            x_velocity = (a / calc) *- speed;
+            x_velocity = (a / calc) * -speed;
         }
         else
         {
@@ -82,7 +90,7 @@ public class asteroid_float : MonoBehaviour
         }
         else if (centre.y < transform.position.y)
         {
-            y_velocity = (b / calc) *- speed;
+            y_velocity = (b / calc) * -speed;
         }
         else
         {
@@ -91,4 +99,3 @@ public class asteroid_float : MonoBehaviour
         transform.Translate(x_velocity * Time.deltaTime, y_velocity * Time.deltaTime, 0f, Space.World);
     }
 }
- 
