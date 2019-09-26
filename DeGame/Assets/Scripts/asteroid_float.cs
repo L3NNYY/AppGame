@@ -35,7 +35,6 @@ public class asteroid_float : MonoBehaviour
             {
                 this.gameObject.tag = "Animation";
                 DestroyAsteroid();
-                print("phase 2");
             }
             
         }
@@ -52,7 +51,6 @@ public class asteroid_float : MonoBehaviour
         anim.SetTrigger("Active");
         isMoving = false;
         Destroy(this.gameObject, 1.0f);
-        print("test");
     }
 
 

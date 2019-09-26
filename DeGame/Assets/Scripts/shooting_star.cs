@@ -62,8 +62,6 @@ public class shooting_star : MonoBehaviour
     void spawnCords()
     {
         SpriteRenderer render = this.GetComponent<SpriteRenderer>();
-        print(render.sprite.texture.height);
-        print(render.sprite.texture.width);
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         int rand = random.Next(1, 3);
         if (rand == 1)

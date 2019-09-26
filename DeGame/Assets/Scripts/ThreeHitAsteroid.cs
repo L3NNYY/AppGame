@@ -19,15 +19,19 @@ public class ThreeHitAsteroid : asteroid_float
         {
             movement();
         }
-        if (click.collideChecker(collider, 5))
+        if (this.gameObject.tag.Equals("Enemy"))
         {
-            if (counter == 2)
+            if (click.collideChecker(collider, 5))
             {
-                DestroyAsteroid();
-            }
-            else
-            {
-                counter += 1;
+                if (counter == 2)
+                {
+                    this.gameObject.tag = "Animation";
+                    DestroyAsteroid();
+                }
+                else
+                {
+                    counter += 1;
+                }
             }
         }
 
