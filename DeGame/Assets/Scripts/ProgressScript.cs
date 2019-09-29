@@ -8,12 +8,15 @@ public class ProgressScript : MonoBehaviour
     public int secondsPassed = 0;
     float secondsScore = 0;
     public int testMultiplier = 1;
-
     public int gameScore;
+    float textPopAnim = 1f;
+    Vector3 originalScoreTextSize;
+    float time = 0f;
     powerups powerups;
     // Start is called before the first frame update
     void Start()
     {
+        originalScoreTextSize = scoreText.transform.localScale;
         powerups = gameObject.GetComponent<powerups>();
     }
 
@@ -24,6 +27,7 @@ public class ProgressScript : MonoBehaviour
             secondsScore += Time.deltaTime;
             secondsPassed = (int) secondsScore * testMultiplier;
             scoreText.text = "" + gameScore;
+            PopText();
         }
 
         if (Input.GetKeyDown(KeyCode.P)){ //Power up activation
@@ -33,5 +37,14 @@ public class ProgressScript : MonoBehaviour
 
     public void addScore(int value){
         gameScore += value;
+        textPopAnim = 0f;
+    }
+    void PopText(){
+        time += Time.deltaTime;
+        if(time >= 0.05f){
+            textPopAnim += 0.05f;
+        }
+        scoreText.color = Color.Lerp(Color.red,Color.white,textPopAnim);
+        scoreText.transform.localScale = Vector3.Lerp(new Vector3(2f,2f,1.46f),originalScoreTextSize, textPopAnim);
     }
 }

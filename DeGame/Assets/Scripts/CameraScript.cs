@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     MenuScript menu;
     PauseMenuScript pause;
     GameObject MainCamera;
+    baseStats earth;
     float zoom = 0.01f;
     float normal = 5f;
     float smooth = 0.1f;
@@ -17,6 +18,7 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        earth = GameObject.Find("3D Earth").GetComponent<baseStats>();
         menu = GetComponent<MenuScript>();
         pause = GetComponent<PauseMenuScript>();
         MainCamera = GameObject.Find("Main Camera");
@@ -43,6 +45,7 @@ public class CameraScript : MonoBehaviour
         }
         if (zoomIn)
         {
+            pause.deathScreen.SetActive(false);
             MainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(normal, zoom, smooth);
             if (MainCamera.GetComponent<Camera>().orthographicSize <= 0.01f)
             {
@@ -58,6 +61,7 @@ public class CameraScript : MonoBehaviour
             {
                 startOfGame = false;
                 smooth = 0;
+                earth.godmode = false;
             }
         }
     }
@@ -65,6 +69,7 @@ public class CameraScript : MonoBehaviour
     public void activateMenuAnim()
     {
         pause.Resume();
+        earth.godmode = true;
         menuAnim = true;
     }
 }
