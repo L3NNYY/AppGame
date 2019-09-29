@@ -20,7 +20,7 @@ public class spawn_asteroid : MonoBehaviour
     public Sprite sprite1, sprite2;
     void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 5f));
         StartCoroutine(SpawnMultiple());
     }
 
