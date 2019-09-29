@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EarthRotate : MonoBehaviour {
 
-    float rotationSpeed = 400;
+    public float rotationSpeed = 400;
     float time = 0f;
+    public float smoothness = .25f;
 
     // Start is called before the first frame update
     void Start() {
@@ -15,7 +16,7 @@ public class EarthRotate : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         time += Time.deltaTime;
-        if (time >= .25f) {
+        if (time >= smoothness) {
             time = 0;
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
