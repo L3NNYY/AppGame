@@ -5,6 +5,7 @@ using UnityEngine;
 public class powerups : MonoBehaviour
 {
     public AudioClip asteroidExplosion;
+    public AudioClip nukeExplosion;
     bool powerup = false;
     float time, prevTime = 0f;
     bool flashing = true;
@@ -38,7 +39,7 @@ public class powerups : MonoBehaviour
                 if (!audioPlayed)
                 {
                     audioPlayed = true;
-                    AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
+                    AudioManager.instance.PlaySound(nukeExplosion, transform.position);
                 }
                 asteroid_float ast = asteroid.GetComponent<asteroid_float>();
                 ast.DestroyAsteroid();
