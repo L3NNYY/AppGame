@@ -50,7 +50,8 @@ public class PauseMenuScript : MonoBehaviour
         if (AudioListener.pause == false)
         {
             AudioListener.pause = true;
-        } else if (AudioListener.pause == true)
+        } 
+        else if (AudioListener.pause == true)
         {
             AudioListener.pause = false;
         }

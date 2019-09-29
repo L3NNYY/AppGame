@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     PauseMenuScript pause;
     GameObject MainCamera;
     baseStats earth;
-    float zoom = 0.01f;
+    float zoom = 0.3f;
     float normal = 5f;
     float smooth = 0.1f;
     float time;
@@ -47,7 +47,7 @@ public class CameraScript : MonoBehaviour
         {
             pause.deathScreen.SetActive(false);
             MainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(normal, zoom, smooth);
-            if (MainCamera.GetComponent<Camera>().orthographicSize <= 0.01f)
+            if (MainCamera.GetComponent<Camera>().orthographicSize <= zoom)
             {
                 menuAnim = false;
                 smooth = 0;

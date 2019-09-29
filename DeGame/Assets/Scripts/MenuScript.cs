@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    EarthRotate earthR;
+    void Start(){
+        earthR = GameObject.Find("3D Earth").GetComponent<EarthRotate>();
+    }
     public void PlayGame()
     {
+        earthR.saveRotation();
         SceneManager.LoadScene("GameScene");
     }
     public void GoToSettings()
@@ -19,6 +24,7 @@ public class MenuScript : MonoBehaviour
     }
     public void GoToMenu()
     {
+        earthR.saveRotation();
         SceneManager.LoadScene("MenuScene");
     }
 }
