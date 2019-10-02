@@ -3,7 +3,11 @@ guid: 424d82a02dc9b6e4b9791a1fd111b87b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - asteroidExplosion: {instanceID: 0}
+  - NukeExplosionSound: {instanceID: 0}
+  - slowTimeExplosion: {instanceID: 0}
+  - nukeExplosion: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

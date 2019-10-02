@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class powerups : MonoBehaviour
 {
+    protected Animation anim;
     public AudioClip asteroidExplosion;
-    public AudioClip nukeExplosion;
+    public AudioClip NukeExplosionSound;
     bool powerup = false;
     float time, prevTime = 0f;
     bool flashing = true;
     bool flashActive = false;
     // Update is called once per frame
+    void Start()
+    {
+        anim = gameObject.GetComponent<Animation>();
+    }
+
     void Update()
     {
         time += Time.deltaTime;
@@ -25,12 +32,14 @@ public class powerups : MonoBehaviour
     }
     public void nukePowerUp(GameObject activatorObj)
     {
-        Destroy(activatorObj);
+        activatorObj.GetComponent<Animator>().SetTrigger("Active");
+        activatorObj.GetComponent<shooting_star>().isMoving = false;
         powerup = true;
         flashActive = true;
         flashing = true;
         print("nuke activated");
         bool audioPlayed = false;
+        Destroy(activatorObj, 1.0f);
         foreach (var asteroid in FindObjectsOfType(typeof(GameObject)) as GameObject[])
         {
             if (asteroid.tag == "Enemy")  //
@@ -39,7 +48,7 @@ public class powerups : MonoBehaviour
                 if (!audioPlayed)
                 {
                     audioPlayed = true;
-                    AudioManager.instance.PlaySound(nukeExplosion, transform.position);
+                    AudioManager.instance.PlaySound(NukeExplosionSound, transform.position);
                 }
                 asteroid_float ast = asteroid.GetComponent<asteroid_float>();
                 ast.DestroyAsteroid();

@@ -15,6 +15,7 @@ public class shooting_star : MonoBehaviour
 
     public RuntimeAnimatorController slowTimeAnim;
     public RuntimeAnimatorController nukeAnim;
+    public bool isMoving = true;
     private int type;
     private Vector2 screenBounds;
     //type 1 = nuke
@@ -95,6 +96,10 @@ public class shooting_star : MonoBehaviour
     }
     void moving()
     {
+        if (!isMoving)
+        {
+            return;
+        }
         float x_velocity;
         float y_velocity;
         float a = System.Math.Abs(this.transform.position.x - destination.x);
