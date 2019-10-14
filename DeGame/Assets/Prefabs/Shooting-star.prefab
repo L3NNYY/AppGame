@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8611491649029586495}
   m_Layer: 0
   m_Name: Shooting-star
-  m_TagString: Untagged
+  m_TagString: PowerUP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowTimeAnim: {fileID: 9100000, guid: 440160f7bf8e0ab458e894387360168f, type: 2}
   nukeAnim: {fileID: 9100000, guid: 8cee3581d2045a1499f075f8632ff4e7, type: 2}
+  isMoving: 1
+  destination: {x: 0, y: 0}
+  startingPos: 
 --- !u!58 &8611491649029586495
 CircleCollider2D:
   m_ObjectHideFlags: 0

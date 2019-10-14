@@ -82,15 +82,19 @@ public class shooting_star : MonoBehaviour
     }
     void onClick()
     {
-        if (click.collideChecker(collider, 30))
+        if (this.gameObject.tag.Equals("PowerUP"))
         {
-            if (this.type == 1)
+            if (click.collideChecker(collider, 30))
             {
-                powerups.nukePowerUp(this.gameObject);
-            }
-            else if (this.type == 2)
-            {
-                powerups.slowDownTime(this.gameObject);
+                this.gameObject.tag = "Animation";
+                if (this.type == 1)
+                {         
+                    powerups.nukePowerUp(this.gameObject);
+                }
+                else if (this.type == 2)
+                {
+                    powerups.slowDownTime(this.gameObject);
+                }
             }
         }
     }
