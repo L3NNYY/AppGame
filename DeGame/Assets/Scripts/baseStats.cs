@@ -18,7 +18,6 @@ public class baseStats : MonoBehaviour
     void Start(){
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
-        print(originalScale);
     }
     // Update is called once per frame
     void Update()

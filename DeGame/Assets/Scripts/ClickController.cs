@@ -7,18 +7,27 @@ public class ClickController : MonoBehaviour
     Vector2 mousePos;
     GameObject gameWrapper;
     ProgressScript progress;
-    void Start(){
+    ClickMultiplier multiplier;
+    public bool aboutToBeDestroyed = false;
+
+    void Start()
+    {
         gameWrapper = GameObject.Find("Game Wrapper");
         progress = gameWrapper.GetComponent<ProgressScript>();
-    }
-    public bool collideChecker(CircleCollider2D objectCollider, int points){
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        multiplier = gameWrapper.GetComponent<ClickMultiplier>();
 
+
+    }
+    public bool collideChecker(CircleCollider2D objectCollider, int points)
+    {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
         {
-                if (objectCollider.OverlapPoint(mousePos)) {
-                    progress.addScore(points);
-                    return true;
+            if (objectCollider.OverlapPoint(mousePos))
+            {
+                progress.addScore(points * multiplier.getScoreMultiplier());
+                multiplier.IncrementStreak();
+                return true;
             }
         }
         return false;

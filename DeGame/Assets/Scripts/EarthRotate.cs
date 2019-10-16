@@ -23,7 +23,7 @@ public class EarthRotate : MonoBehaviour {
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
             earthRotation = transform.eulerAngles;
         }
-        print(earthRotation);
+       // print(earthRotation);
     }
     
     public void saveRotation(){
