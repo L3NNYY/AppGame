@@ -47,7 +47,7 @@ public class ClickMultiplier : MonoBehaviour
         {
             if (hit == true)
             {
-               //// print("hit!");
+               // print("hit!");
                 hit = false;
             }
             else
