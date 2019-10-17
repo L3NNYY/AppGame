@@ -7,7 +7,6 @@ public class ProgressScript : MonoBehaviour
     public Text scoreText;
     public int secondsPassed = 0;
     float secondsScore = 0;
-    public int testMultiplier = 1;
     public int gameScore;
     float textPopAnim = 1f;
     Vector3 originalScoreTextSize;
@@ -25,7 +24,7 @@ public class ProgressScript : MonoBehaviour
     {
         if(Time.timeScale != 0f){
             secondsScore += Time.deltaTime;
-            secondsPassed = (int) secondsScore * testMultiplier;
+            secondsPassed = (int)secondsScore;
             scoreText.text = "" + gameScore;
             PopText();
         }

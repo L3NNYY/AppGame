@@ -14,10 +14,12 @@ public class baseStats : MonoBehaviour
     bool hitAnimEnding;
     public GameObject deathScreen;
     public GameObject onScreenUI;
+    ClickMultiplier multiplier;
 
     void Start(){
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
+        multiplier = GameObject.Find("Game Wrapper").GetComponent<ClickMultiplier>();
     }
     // Update is called once per frame
     void Update()
@@ -49,6 +51,7 @@ public class baseStats : MonoBehaviour
         {
             damageTime = 1f;
             hitAnimEnding = false;
+            multiplier.resetStreakAndMultiplier();
             Destroy(col.gameObject);
             HealthBarScript.health -= 5;
             AudioManager.instance.PlaySound(earthExplosion, transform.position);

@@ -1,63 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ClickMultiplier : MonoBehaviour
 {
-    Vector2 mousePos;
-    GameObject gameWrapper;
-    ProgressScript progress;
-    GameObject background;
-    BoxCollider2D backgroundCollider;
+    private bool hit;
 
     int streak;
     int scoreMultiplier;
     // Start is called before the first frame update
     void Start()
     {
-        gameWrapper = GameObject.Find("Game Wrapper");
-        progress = gameWrapper.GetComponent<ProgressScript>();
-        background = GameObject.Find("Background");
-        backgroundCollider = background.GetComponent<BoxCollider2D>();
         scoreMultiplier = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-    private bool CollideCheckerBox(BoxCollider2D collider)
-    {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
-        {
-            if (collider.OverlapPoint(mousePos))
-            {
-                return true;
-            }
-        }
-        return false;
     }
     public void IncrementStreak()
     {
         streak += 1;
         handleStreak();
     }
-    
+
     private void handleStreak()
     {
-            if (streak % 5 == 0)
-            {
-                scoreMultiplier += 1;
-                print(scoreMultiplier);
-            }
+        if (streak % 5 == 0)
+        {
+            scoreMultiplier += 1;
+            print(scoreMultiplier);
+        }
 
     }
     public int getScoreMultiplier()
     {
         return scoreMultiplier;
     }
-
+    public void BackgroundClick() //button click function
+    {
+        
+        if (Time.timeScale != 0f)
+        {
+            if (hit == true)
+            {
+               // print("hit!");
+                hit = false;
+            }
+            else
+            {
+               // print("you missed!");
+                resetStreakAndMultiplier();
+            }
+        }
+    }
+    public void resetStreakAndMultiplier()
+    {
+        streak = 0;
+        scoreMultiplier = 1;
+    }
+    public void hitSetter()
+    {
+        hit = true;
+    }
 }

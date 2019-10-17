@@ -8,7 +8,6 @@ public class ClickController : MonoBehaviour
     GameObject gameWrapper;
     ProgressScript progress;
     ClickMultiplier multiplier;
-    public bool aboutToBeDestroyed = false;
 
     void Start()
     {
@@ -27,6 +26,7 @@ public class ClickController : MonoBehaviour
             {
                 progress.addScore(points * multiplier.getScoreMultiplier());
                 multiplier.IncrementStreak();
+                multiplier.hitSetter();
                 return true;
             }
         }

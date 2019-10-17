@@ -17,7 +17,6 @@ public class spawn_asteroid : MonoBehaviour
     int oldScore = 0;
     System.Random random = new System.Random();
     public Sprite[] spriteList;
-    public Sprite sprite1, sprite2;
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 5f));
