@@ -17,13 +17,6 @@ public class PauseMenuScript : MonoBehaviour
         onScreenUI.SetActive(true);
         Time.timeScale = 1f;
     }
-    void Update()
-    {
-        if(deathScreen.active){
-            return;
-        }
-
-    }
     public void Resume()
     {
         GameIsPaused = false;

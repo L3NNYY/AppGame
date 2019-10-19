@@ -6,14 +6,14 @@ public class ThreeHitAsteroid : asteroid_float
 {
     // Start is called before the first frame update
     int counter = 0;
-    void Start()
+    protected override void Start()
     {
         
         base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         if (isMoving)
         {

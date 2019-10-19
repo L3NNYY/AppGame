@@ -8,7 +8,7 @@ public class shooting_star : MonoBehaviour
 
     //Animator anim;
     Vector2 mousePos;
-    CircleCollider2D collider;
+    new CircleCollider2D collider;
     ClickController click;
     powerups powerups;
     System.Random random = new System.Random();
