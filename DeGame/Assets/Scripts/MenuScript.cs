@@ -5,18 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    EarthRotate earthR;
-    void Start(){
-        earthR = GameObject.Find("3D Earth").GetComponent<EarthRotate>();
+    private CameraScript cam;
+    private GameObject UI;
+    private AsyncOperation a;
+
+    void Start()
+    {
+        cam = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+        UI = this.gameObject;
+
     }
     public void PlayGame()
     {
-        earthR.saveRotation();
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(Some("GameScene"));
+        cam.PlayTransitionAnimation("out");
+        UI.SetActive(false);
     }
     public void GoToSettings()
     {
-        SceneManager.LoadScene("SettingsScene");
+        SceneManager.LoadScene("GameScene");
     }
     public void QuitGame()
     {
@@ -24,7 +31,32 @@ public class MenuScript : MonoBehaviour
     }
     public void GoToMenu()
     {
-        earthR.saveRotation();
-        SceneManager.LoadScene("MenuScene");
+        StartCoroutine(Some("MenuScene"));
+        cam.PlayTransitionAnimation("in");
+        UI.SetActive(false);
+        GameObject.Find("Asteroids").SetActive(false);
+
+    }
+    IEnumerator Some(string sceneName)
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;
+        while (asyncLoad.progress >= 0.9f)
+        {
+
+            yield return null;
+        }
+        getter(asyncLoad);
+        yield return null;
+
+    }
+    public void setter()
+    {
+        a.allowSceneActivation = true;
+    }
+    public void getter(AsyncOperation b)
+    {
+        a = b;
     }
 }

@@ -1,75 +1,107 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraScript : MonoBehaviour
 {
     MenuScript menu;
-    PauseMenuScript pause;
+    bool animationRunning = false;
     GameObject MainCamera;
-    baseStats earth;
-    float zoom = 0.3f;
-    float normal = 5f;
-    float smooth = 0.1f;
-    float time;
-    // Start is called before the first frame update
-    bool menuAnim = false;
-    bool startOfGame = true;
-    // Update is called once per frame
+    EarthRotate earthRotate;
+    int estimatedFrames;
+    int frameTracker;
+    string sceneName;
+    float step;
+    float original;
     void Start()
     {
-        earth = GameObject.Find("3D Earth").GetComponent<baseStats>();
-        menu = GetComponent<MenuScript>();
-        pause = GetComponent<PauseMenuScript>();
+        earthRotate = GameObject.Find("3D Earth").GetComponent<EarthRotate>();
+        //menu = gameObject.AddComponent<MenuScript>();
+
         MainCamera = GameObject.Find("Main Camera");
-    }
-    void Update()
-    {
-        if (menuAnim)
+        earthRotate = GameObject.Find("3D Earth").GetComponent<EarthRotate>();
+        sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName.Equals("GameScene"))
         {
-            ZoomInAnim(true);
+            menu = GameObject.Find("Game UI").GetComponent<MenuScript>();
+            //pause = GameObject.Find("Game UI").GetComponent<PauseMenuScript>();
         }
-        else if (startOfGame)
+        else
         {
-            ZoomInAnim(false);
+            menu = GameObject.Find("MainMenu").GetComponent<MenuScript>();
         }
     }
 
-    void ZoomInAnim(bool zoomIn)
+
+    private void Anim(string transitionType)
     {
-        time += Time.deltaTime;
-        if (time > 0.01f)
-        { //prevents zoom in to be done using framerate/tick rate, instead depends on deltaTime
-            time = 0;
-            smooth += 0.01f;
-        }
-        if (zoomIn)
+
+        //main camera configuration
+        step += 0.04f; //change pseudo smoothness lower = smoother
+        //
+        
+        earthRotate.AdjustSpinSpeed(frameTracker, estimatedFrames);
+        if (transitionType == "in")
         {
-            pause.deathScreen.SetActive(false);
-            MainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(normal, zoom, smooth);
-            if (MainCamera.GetComponent<Camera>().orthographicSize <= zoom)
+            MainCamera.GetComponent<Camera>().orthographicSize = original - step;
+            if (MainCamera.GetComponent<Camera>().orthographicSize <= 0.5f)
             {
-                menuAnim = false;
-                smooth = 0;
-                menu.GoToMenu();
+                animationRunning = false;
+                earthRotate.saveRotation();
+                menu.setter();
+            }
+        }
+        else if (transitionType == "out")
+        {
+            MainCamera.GetComponent<Camera>().orthographicSize = original + step;
+            if (MainCamera.GetComponent<Camera>().orthographicSize >= 5f)
+            {
+                animationRunning = false;
+                earthRotate.saveRotation();
+                menu.setter();
             }
         }
         else
         {
-            MainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(zoom, normal, smooth);
-            if (MainCamera.GetComponent<Camera>().orthographicSize >= 5f)
-            {
-                startOfGame = false;
-                smooth = 0;
-                earth.godmode = false;
-            }
+            print("CameraCript/Anim/Error - invalid transition type");
         }
     }
 
-    public void activateMenuAnim()
+
+    private IEnumerator AnimationIterator(string transitionType)
     {
-        pause.Resume();
-        earth.godmode = true;
-        menuAnim = true;
+        original = MainCamera.GetComponent<Camera>().orthographicSize;
+        animationRunning = true;
+
+        if (transitionType.Equals("in")){
+            estimatedFrames = (int)earthRotate.EvaluateMe(original, 0.5f, 0.04f);
+            Time.timeScale = 1f;
+        } 
+        else if (transitionType.Equals("out"))
+        {
+            earthRotate.rotationSpeed = 250;
+            estimatedFrames = (int)earthRotate.EvaluateMe(original, 5f, 0.04f);
+        }
+
+        if (transitionType.Equals("in") || transitionType.Equals("out"))
+        {
+            while (animationRunning == true)
+            {
+                Anim(transitionType);
+                frameTracker += 1;
+                yield return null;
+            }
+        }
+        else
+        {
+            print("Incorrect transitionType. Possible transitionTypes: in, out");
+            animationRunning = false;
+        }
+        yield return null;
+    }
+    public void PlayTransitionAnimation(string transitionType)
+    {
+        StartCoroutine(AnimationIterator(transitionType));
     }
 }

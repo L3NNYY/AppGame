@@ -108,7 +108,7 @@ public class ClickMultiplier : MonoBehaviour
             }
             else
             {
-               // print("you missed!");
+               //print("you missed!");
                 resetStreakAndMultiplier();
             }
         }

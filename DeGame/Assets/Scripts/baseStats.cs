@@ -16,12 +16,13 @@ public class baseStats : MonoBehaviour
     public GameObject onScreenUI;
     ClickMultiplier multiplier;
 
-    void Start(){
+    void Start()
+    {
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
         multiplier = GameObject.Find("Game Wrapper").GetComponent<ClickMultiplier>();
     }
-    // Update is called once per frame
+   // Update is called once per frame
     void Update()
     {
         if (HealthBarScript.health <= 0 && gameOver == false)
@@ -30,21 +31,27 @@ public class baseStats : MonoBehaviour
             Time.timeScale = 0f;
             deathScreen.SetActive(true);
             onScreenUI.SetActive(false);
-        }  
-        if(damageTime > 0){
+        }
+        if (damageTime > 0)
+        {
             damageTime -= Time.deltaTime * 7;
-            if(hitAnimEnding){
-                transform.localScale = Vector3.Lerp(originalScale,largeScale, damageTime);
-            }else{
-                transform.localScale = Vector3.Lerp(largeScale,originalScale, damageTime);
+            if (hitAnimEnding)
+            {
+                transform.localScale = Vector3.Lerp(originalScale, largeScale, damageTime);
             }
-            if(damageTime <= 0 && !hitAnimEnding){
+            else
+            {
+                transform.localScale = Vector3.Lerp(largeScale, originalScale, damageTime);
+            }
+            if (damageTime <= 0 && !hitAnimEnding)
+            {
                 hitAnimEnding = true;
                 damageTime = 1f;
             }
+
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag.Equals("Enemy") && !godmode)
@@ -56,5 +63,30 @@ public class baseStats : MonoBehaviour
             HealthBarScript.health -= 5;
             AudioManager.instance.PlaySound(earthExplosion, transform.position);
         }
+
+        //StartCoroutine(Lerpin());
+
+    }
+
+    IEnumerator Lerpin()
+    {
+        float startTime = Time.time;
+        float overTime = 0.15f;
+        while (Time.time < startTime + overTime)
+        {
+            transform.localScale = Vector3.Lerp(originalScale, largeScale, (Time.time - startTime) / overTime);
+            print((Time.time - startTime) / overTime);
+            yield return null;
+        }
+        transform.localScale = largeScale;
+
+        startTime = Time.time;
+        while (Time.time < startTime + overTime)
+        {
+            transform.localScale = Vector3.Lerp(largeScale, originalScale, (Time.time - startTime) / overTime);
+            print((Time.time - startTime) / overTime);
+            yield return null;
+        }
+        transform.localScale = originalScale;
     }
 }
