@@ -23,7 +23,7 @@ public class MenuScript : MonoBehaviour
     }
     public void GoToSettings()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SettingsScene");
     }
     public void QuitGame()
     {

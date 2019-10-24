@@ -10,20 +10,12 @@ public class EarthRotate : MonoBehaviour
     float time;
     public float smoothness;
     public Vector3 earthRotation;
+<<<<<<< HEAD
     public AnimationCurve someCurve; // MUST BE PUBLIC!!!
     public float animationSpeed;
-    Renderer planetSkin;
 
     void Start()
     {
-        planetSkin = GetComponent<Renderer>();
-        if(!string.IsNullOrWhiteSpace(PlayerPrefs.GetString("planet_texture"))){
-        planetSkin.material = Resources.Load(PlayerPrefs.GetString("planet_texture")) as Material;
-        print("texture loaded");
-        }
-        earthRotation = new Vector3(PlayerPrefs.GetFloat("earth_rotation_x"),PlayerPrefs.GetFloat("earth_rotation_y"),PlayerPrefs.GetFloat("earth_rotation_z"));
-        transform.eulerAngles = earthRotation;
-
         earthRotation = new Vector3(PlayerPrefs.GetFloat("earth_rotation_x"), PlayerPrefs.GetFloat("earth_rotation_y"), PlayerPrefs.GetFloat("earth_rotation_z"));
         transform.eulerAngles = earthRotation;
         rotationSpeed = 5;
@@ -39,8 +31,20 @@ public class EarthRotate : MonoBehaviour
             rotationSpeed = 5;
             smoothness = .05f;
         }
+=======
+    Renderer planetSkin;
+
+    // Start is called before the first frame update
+    void Start() {
+        
+        planetSkin = GetComponent<Renderer>();
+        planetSkin.material = Resources.Load(PlayerPrefs.GetString("planet_texture")) as Material;
+        print("texture loaded");
+        earthRotation = new Vector3(PlayerPrefs.GetFloat("earth_rotation_x"),PlayerPrefs.GetFloat("earth_rotation_y"),PlayerPrefs.GetFloat("earth_rotation_z"));
+        transform.eulerAngles = earthRotation;
+>>>>>>> Added unlock menu with 6 planets
     }
-    
+
     void Update()
     {
         time += Time.deltaTime;
