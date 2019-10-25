@@ -37,6 +37,17 @@ public class MenuScript : MonoBehaviour
         GameObject.Find("Asteroids").SetActive(false);
 
     }
+    public void GoToMenu_Death()
+    {
+        SpriteRenderer render = GameObject.Find("blackFade").GetComponent<SpriteRenderer>();
+        Color tmp = render.color;
+        tmp.a = 0f;
+        render.color = tmp;
+        StartCoroutine(Some("MenuScene"));
+        cam.PlayTransitionAnimation("in");
+        UI.SetActive(false);
+        GameObject.Find("Asteroids").SetActive(false);
+    }
     IEnumerator Some(string sceneName)
     {
 

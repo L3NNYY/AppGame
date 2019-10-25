@@ -14,12 +14,14 @@ public class baseStats : MonoBehaviour
     bool hitAnimEnding;
     public GameObject deathScreen;
     public GameObject onScreenUI;
+    public SpriteRenderer render;
     ClickMultiplier multiplier;
 
     void Start()
     {
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
+
         multiplier = GameObject.Find("Game Wrapper").GetComponent<ClickMultiplier>();
     }
    // Update is called once per frame
@@ -28,9 +30,8 @@ public class baseStats : MonoBehaviour
         if (HealthBarScript.health <= 0 && gameOver == false)
         {
             gameOver = true;
-            Time.timeScale = 0f;
-            deathScreen.SetActive(true);
-            onScreenUI.SetActive(false);
+            StartCoroutine(Fade());
+
         }
         if (damageTime > 0)
         {
@@ -67,7 +68,29 @@ public class baseStats : MonoBehaviour
         //StartCoroutine(Lerpin());
 
     }
+    IEnumerator Fade()
+    {
+        render = GameObject.Find("blackFade").GetComponent<SpriteRenderer>();
+        Color tmp = render.color;
 
+
+
+        Time.timeScale = 0f;
+        onScreenUI.SetActive(false);
+        while (render.color.a < 0.8f)
+        {
+            tmp.a += 0.15f;
+            render.color = tmp;
+            yield return null;
+        }
+
+        deathScreen.SetActive(true);
+
+
+        
+
+        yield return null;
+    }
     IEnumerator Lerpin()
     {
         float startTime = Time.time;

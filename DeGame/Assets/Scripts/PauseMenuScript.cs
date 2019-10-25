@@ -38,6 +38,18 @@ public class PauseMenuScript : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         deathScreen.SetActive(false);
     }
+
+    public void PlayAgain_Death()
+    {
+        SpriteRenderer render = GameObject.Find("blackFade").GetComponent<SpriteRenderer>();
+        Color tmp = render.color;
+        tmp.a = 0f;
+        render.color = tmp;
+        Resume();
+        SceneManager.LoadScene("GameScene");
+        deathScreen.SetActive(false);
+    }
+
     public void Mute()
     {
         if (AudioListener.pause == false)
