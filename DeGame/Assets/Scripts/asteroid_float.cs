@@ -13,9 +13,11 @@ public class asteroid_float : MonoBehaviour
     public AudioClip asteroidExplosion;
     protected bool isMoving = true;
     public float speed;
+    coins coin;
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        coin = gameObject.AddComponent<coins>();
         click = gameObject.AddComponent<ClickController>();
         collider = gameObject.GetComponent<CircleCollider2D>();
         anim = gameObject.GetComponent<Animator>();
@@ -51,6 +53,7 @@ public class asteroid_float : MonoBehaviour
         anim.SetTrigger("Active");
         isMoving = false;
         Destroy(this.gameObject, 1.0f);
+        coin.changeCoins(1);
     }
 
 
