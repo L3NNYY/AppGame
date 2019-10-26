@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class asteroid_float : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class asteroid_float : MonoBehaviour
     protected Animator anim;
     protected new CircleCollider2D collider;
     protected ClickController click;
+    public Text coin_increment;
     public AudioClip asteroidExplosion;
     protected bool isMoving = true;
     public float speed;
@@ -45,6 +47,8 @@ public class asteroid_float : MonoBehaviour
 
     public void DestroyAsteroid()
     {
+        Text inc;
+        inc = Instantiate(coin_increment) as Text;
         if (isMoving)
         { //stops audio playing multiple times if clicking continues once destroyed
             AudioManager.instance.PlaySound(asteroidExplosion, transform.position);
@@ -54,6 +58,7 @@ public class asteroid_float : MonoBehaviour
         isMoving = false;
         Destroy(this.gameObject, 1.0f);
         coin.changeCoins(1);
+        inc.GetComponent<visual_increment>().showIncrement(this.gameObject.transform.position);
     }
 
 

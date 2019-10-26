@@ -152,5 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5b1b13831ba3c40825f41661dd85cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin_increment: {fileID: 2913019131955556966, guid: fe1d0f2f78bf421499b9c31df4439be6,
+    type: 3}
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
   speed: 1.25

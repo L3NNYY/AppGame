@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b207324569c146640a0e4cc0e5e378fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81e899ceb82ff0547aaba63447461c6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,5 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245be05697fc07a48aead250bfba16cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin_increment: {fileID: 2913019131955556966, guid: fe1d0f2f78bf421499b9c31df4439be6,
+    type: 3}
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
   speed: 0

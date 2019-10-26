@@ -33,7 +33,7 @@ public class ProgressScript : MonoBehaviour
             powerups.nukePowerUp(null);
         }
     }
-
+    
     public void addScore(int value){
         gameScore += value;
         textPopAnim = 0f;
