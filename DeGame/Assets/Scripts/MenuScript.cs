@@ -25,6 +25,14 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("SettingsScene");
     }
+    public void OpenFacebook()
+    {
+        Application.OpenURL("https://www.facebook.com");
+    }
+    public void OpenTwitter()
+    {
+        Application.OpenURL("https://www.twitter.com");
+    }
     public void QuitGame()
     {
         Application.Quit();
