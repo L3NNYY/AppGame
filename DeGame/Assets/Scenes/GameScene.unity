@@ -3593,8 +3593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37c92b45b2f99f47ac11f7861f9245e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  playButton: {fileID: 0}
 --- !u!82 &1642237187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3830,7 +3828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1800040966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4143,7 +4141,7 @@ PrefabInstance:
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}

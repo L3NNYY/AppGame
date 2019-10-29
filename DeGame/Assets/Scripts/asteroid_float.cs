@@ -47,6 +47,9 @@ public class asteroid_float : MonoBehaviour
 
     public void DestroyAsteroid()
     {
+        if(anim.enabled == false){
+            anim.enabled = true;
+        }
         Text inc;
         inc = Instantiate(coin_increment) as Text;
         if (isMoving)
