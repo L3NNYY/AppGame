@@ -16,21 +16,26 @@ public class baseStats : MonoBehaviour
     public GameObject deathScreen;
     public GameObject onScreenUI;
     public GameObject deathScoreText;
+    public GameObject coinsEarned;
+    public GameObject highScoreText;
     public SpriteRenderer render;
-     public AudioClip countUpEffect;
+    public AudioClip countUpEffect;
+    public AudioClip highScoreReachedEffect;
     ClickMultiplier multiplier;
     bool scoreCountStopped = false;
+    bool highScoreCounter = false;
     int maxScore, score;
     AudioSource audioSource;
-    float time;
-
+    float time, counter;
+    bool firstTimeLoop = true;
     void Start()
     {
+        PlayerPrefs.SetInt("coins_gained", 0);
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = countUpEffect;
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
-        current_health = 5;
+        current_health = 100;
         multiplier = GameObject.Find("Game Wrapper").GetComponent<ClickMultiplier>();
     }
     // Update is called once per frame
@@ -130,10 +135,29 @@ public class baseStats : MonoBehaviour
 
     void countUpScore(int maxScore, Text scoreText)
     {
-        if (score == maxScore)
+        if (score >= maxScore)
         {
+            if(firstTimeLoop){
             audioSource.Stop();
-            scoreCountStopped = true;
+            audioSource.clip = highScoreReachedEffect;
+            audioSource.loop = false;
+            audioSource.Play(0);
+            firstTimeLoop = false;
+            coinsEarned.SetActive(true);
+            coinsEarned.GetComponent<Text>().text = "+" + PlayerPrefs.GetInt("coins_gained") + " coins";
+            }
+            PlayerPrefs.SetInt("coins_gained", 0);
+            if(maxScore > PlayerPrefs.GetInt("top_score") || highScoreCounter == true){
+                counter += 0.02f;
+                highScoreCounter = true;
+                PlayerPrefs.SetInt("top_score",maxScore);
+                highScoreText.SetActive(true);
+                highScoreText.GetComponent<Text>().color = Color.Lerp(Color.white,Color.yellow,counter);
+                coinsEarned.GetComponent<Text>().color = Color.Lerp(Color.white,Color.yellow,counter);
+                if(counter >= 1.0f){
+                    scoreCountStopped = true;
+                }
+            }
             return;
         }
         score+=4;
