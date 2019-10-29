@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class baseStats : MonoBehaviour
@@ -14,24 +15,41 @@ public class baseStats : MonoBehaviour
     bool hitAnimEnding;
     public GameObject deathScreen;
     public GameObject onScreenUI;
+    public GameObject deathScoreText;
     public SpriteRenderer render;
+     public AudioClip countUpEffect;
     ClickMultiplier multiplier;
+    bool scoreCountStopped = false;
+    int maxScore, score;
+    AudioSource audioSource;
+    float time;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = countUpEffect;
         originalScale = transform.localScale;
         largeScale = transform.localScale * 1.3f;
-
+        current_health = 5;
         multiplier = GameObject.Find("Game Wrapper").GetComponent<ClickMultiplier>();
     }
-   // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (HealthBarScript.health <= 0 && gameOver == false)
         {
             gameOver = true;
+            maxScore = System.Convert.ToInt32(GameObject.Find("scoreText").GetComponent<Text>().text);
             StartCoroutine(Fade());
 
+        }
+        if (!scoreCountStopped && gameOver == true)
+        {
+            time += Time.unscaledDeltaTime;
+            if(time > 0.001f){
+            countUpScore(maxScore, deathScoreText.GetComponent<Text>());
+            time = 0f;
+            }
         }
         if (damageTime > 0)
         {
@@ -86,9 +104,6 @@ public class baseStats : MonoBehaviour
 
         deathScreen.SetActive(true);
 
-
-        
-
         yield return null;
     }
     IEnumerator Lerpin()
@@ -111,5 +126,19 @@ public class baseStats : MonoBehaviour
             yield return null;
         }
         transform.localScale = originalScale;
+    }
+
+    void countUpScore(int maxScore, Text scoreText)
+    {
+        if (score == maxScore)
+        {
+            audioSource.Stop();
+            scoreCountStopped = true;
+            return;
+        }
+        score+=4;
+        scoreText.text = "" + score;
+        audioSource.pitch = Mathf.Lerp(0.7f, 1.7f, ((float)score/(float)maxScore));
+        audioSource.Play(0);
     }
 }

@@ -17,6 +17,7 @@ public class ProgressScript : MonoBehaviour
     {
         originalScoreTextSize = scoreText.transform.localScale;
         powerups = gameObject.GetComponent<powerups>();
+        gameScore = 1500;
     }
 
     // Update is called once per frame
