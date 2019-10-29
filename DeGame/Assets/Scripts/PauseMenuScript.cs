@@ -10,6 +10,7 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject deathScreen;
     public GameObject onScreenUI; 
+    public AudioSource audioSource;
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -19,6 +20,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void Resume()
     {
+        audioSource.Play();
         GameIsPaused = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -26,6 +28,7 @@ public class PauseMenuScript : MonoBehaviour
     }
     public void Pause()
     {
+        audioSource.Play();
         GameIsPaused = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -35,6 +38,7 @@ public class PauseMenuScript : MonoBehaviour
     public void PlayAgain()
     {
         Resume();
+        audioSource.Play();
         SceneManager.LoadScene("GameScene");
         deathScreen.SetActive(false);
     }
@@ -45,6 +49,7 @@ public class PauseMenuScript : MonoBehaviour
         Color tmp = render.color;
         tmp.a = 0f;
         render.color = tmp;
+        audioSource.Play();
         Resume();
         SceneManager.LoadScene("GameScene");
         deathScreen.SetActive(false);
@@ -59,6 +64,7 @@ public class PauseMenuScript : MonoBehaviour
         else if (AudioListener.pause == true)
         {
             AudioListener.pause = false;
+            audioSource.Play();
         }
 
     }
