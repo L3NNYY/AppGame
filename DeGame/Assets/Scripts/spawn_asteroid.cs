@@ -32,9 +32,13 @@ public class spawn_asteroid : MonoBehaviour
         {
 
             ast = Instantiate(threeHitAsteroidPrefab) as GameObject;
+            minimumScale = 0.06f;
+            maximumScale = 0.1f;
         }
         else
         {
+            minimumScale = 0.03f;
+            maximumScale = 0.07f;
             randomNumber = random.Next(0, 5);
             asteroidPrefab.GetComponent<SpriteRenderer>().sprite = spriteList[randomNumber];
             ast = Instantiate(asteroidPrefab) as GameObject;
