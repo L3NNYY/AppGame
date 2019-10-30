@@ -9,6 +9,13 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
+    void Start(){
+        if (GameObject.Find ("Audio Manager") 
+                 && GameObject.Find ("Audio Manager") != this.gameObject)
+                     {
+                         Destroy (this.gameObject);
+                     }
+    }
     void Awake()
     {
         instance = this;

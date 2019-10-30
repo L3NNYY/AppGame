@@ -17,6 +17,7 @@ public class MenuScript : MonoBehaviour
     }
     public void PlayGame()
     {
+        Destroy(GameObject.Find("Audio Manager"), 0f);
         StartCoroutine(Some("GameScene"));
         cam.PlayTransitionAnimation("out");
         UI.SetActive(false);
