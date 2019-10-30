@@ -22,13 +22,13 @@ public class MenuScript : MonoBehaviour
         cam.PlayTransitionAnimation("out");
         UI.SetActive(false);
     }
-    public void GoToSettings()
+    public void GoToUnlocks()
     {
-        SceneManager.LoadScene("SettingsScene");
+        SceneManager.LoadScene("UnlocksScene");
     }
     public void OpenFacebook()
     {
-        Application.OpenURL("https://www.facebook.com");
+        Application.OpenURL("https://www.facebook.com/");
     }
     public void OpenTwitter()
     {

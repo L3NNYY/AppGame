@@ -12,6 +12,7 @@ public class unlock_manager : MonoBehaviour
     void Start()
     {
         coin = gameObject.AddComponent<coins>();
+        //coin.changeCoins(9999);
         coin_value.text = "" + coin.getCoins();
         showUnlockedSkins();
         notifySelect(PlayerPrefs.GetString("planet_texture"));
@@ -37,12 +38,15 @@ public class unlock_manager : MonoBehaviour
             }
         }
     }
+
     public void UnlockChosen(GameObject skin)
     {
         Image texture = skin.GetComponent<Image>();
         if (skin.transform.GetChild(0).GetComponent<Text>().text != "UNLOCKED")
         {
-            int value = System.Convert.ToInt32(skin.transform.GetChild(0).GetComponent<Text>().text);
+            string valueStr = skin.transform.GetChild(0).GetComponent<Text>().text;
+            valueStr = valueStr.Substring(0, valueStr.Length - 6);
+            int value = System.Convert.ToInt32(valueStr);
             if (coin.getCoins() < value)
             {
                 print("Insufficient coin amount");
@@ -58,7 +62,8 @@ public class unlock_manager : MonoBehaviour
         PlayerPrefs.SetString("planet_texture", texture.mainTexture.name);
         notifySelect(PlayerPrefs.GetString("planet_texture"));
     }
-    void notifySelect(string name){
+    void notifySelect(string name)
+    {
         GameObject notify_text = GameObject.Find("skin_notify");
         notify_text.GetComponent<Text>().text = "Current planet: " + name;
     }
