@@ -160,7 +160,7 @@ public class baseStats : MonoBehaviour
             }
             return;
         }
-        score+=4;
+        score+=5;
         scoreText.text = "" + score;
         audioSource.pitch = Mathf.Lerp(0.7f, 1.7f, ((float)score/(float)maxScore));
         audioSource.Play(0);

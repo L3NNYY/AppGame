@@ -13,6 +13,7 @@ public class unlock_manager : MonoBehaviour
     {
         coin = gameObject.AddComponent<coins>();
         //coin.changeCoins(9999);
+        //PlayerPrefs.SetString("unlocked_planets","");
         coin_value.text = "" + coin.getCoins();
         showUnlockedSkins();
         notifySelect(PlayerPrefs.GetString("planet_texture"));
