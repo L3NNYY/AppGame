@@ -18,6 +18,8 @@ public class asteroid_float : MonoBehaviour
     public float speed;
     coins coin;
     float absPosX;
+    float zigFreq = 3f;
+    float zigSize = 10f;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -125,7 +127,7 @@ public class asteroid_float : MonoBehaviour
         {
             x_velocity = speed;
             absPosX += x_velocity * Time.deltaTime;
-            transform.Translate(x_velocity * Time.deltaTime,((float)Math.Sin(absPosX) * 2) * Time.deltaTime, 0f, Space.Self);
+            transform.Translate(x_velocity * Time.deltaTime,(float)Math.Sin(absPosX* zigFreq) * Time.deltaTime * zigSize, 0f, Space.Self);
         }
     }
 }
