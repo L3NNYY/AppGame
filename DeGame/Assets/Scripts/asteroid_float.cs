@@ -13,9 +13,11 @@ public class asteroid_float : MonoBehaviour
     protected ClickController click;
     public Text coin_increment;
     public AudioClip asteroidExplosion;
+    public bool wavy = false;
     protected bool isMoving = true;
     public float speed;
     coins coin;
+    float absPosX;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -24,6 +26,16 @@ public class asteroid_float : MonoBehaviour
         collider = gameObject.GetComponent<CircleCollider2D>();
         anim = gameObject.GetComponent<Animator>();
         centre = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z));
+        if(wavy){
+        Vector2 earthPos = GameObject.Find("3D Earth").transform.position - transform.position;
+        float angle = Mathf.Atan2(earthPos.y, earthPos.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //(float)Math.Sin(transform.position.x) * Time.deltaTime
+        transform.rotation = rotation;
+        print(transform.rotation);
+        absPosX = 0f;
+        };
+
     }
 
     // Update is called once per frame
@@ -40,14 +52,15 @@ public class asteroid_float : MonoBehaviour
                 this.gameObject.tag = "Animation";
                 DestroyAsteroid();
             }
-            
+
         }
 
     }
 
     public void DestroyAsteroid()
     {
-        if(anim.enabled == false){
+        if (anim.enabled == false)
+        {
             anim.enabled = true;
         }
         Text inc;
@@ -72,7 +85,7 @@ public class asteroid_float : MonoBehaviour
         float a = System.Math.Abs(transform.position.x);
         float b = System.Math.Abs(transform.position.y);
         float calc = (float)Math.Sqrt(a * a + b * b);
-        if (Time.timeScale != 0f)
+        if (Time.timeScale != 0f && !wavy)
         {
             transform.Rotate(0, 0, 1, Space.Self);
         }
@@ -91,8 +104,6 @@ public class asteroid_float : MonoBehaviour
 
 
 
-
-
         if (centre.y > transform.position.y)
         {
             y_velocity = (b / calc) * speed;
@@ -105,6 +116,16 @@ public class asteroid_float : MonoBehaviour
         {
             y_velocity = 0f;
         }
-        transform.Translate(x_velocity * Time.deltaTime, y_velocity * Time.deltaTime, 0f, Space.World);
+
+        if (!wavy)
+        {
+            transform.Translate(x_velocity * Time.deltaTime, y_velocity * Time.deltaTime, 0f, Space.World);
+        }
+        else
+        {
+            x_velocity = speed;
+            absPosX += x_velocity * Time.deltaTime;
+            transform.Translate(x_velocity * Time.deltaTime,((float)Math.Sin(absPosX) * 2) * Time.deltaTime, 0f, Space.Self);
+        }
     }
 }

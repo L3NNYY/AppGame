@@ -7,6 +7,7 @@ public class spawn_asteroid : MonoBehaviour
 {
     public GameObject asteroidPrefab;
     public GameObject threeHitAsteroidPrefab;
+    public GameObject wavyAsteroidPrefab;
     public GameObject Asteroids; // Parent to store all asteroid prefabs
     float asteroidSpeed = 1.25f;
     float rate = 2f;
@@ -35,6 +36,13 @@ public class spawn_asteroid : MonoBehaviour
             minimumScale = 0.06f;
             maximumScale = 0.1f;
         }
+        else if (chooseType == 2 || chooseType == 3)
+        {
+
+            ast = Instantiate(wavyAsteroidPrefab) as GameObject;
+            minimumScale = 0.01f;
+            maximumScale = 0.03f;
+        }
         else
         {
             minimumScale = 0.03f;
@@ -51,6 +59,9 @@ public class spawn_asteroid : MonoBehaviour
             ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
                                                                              //TODO: this area will most likely simplify upon a major revamp, getting components together
                                                                              //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
+            if(chooseType == 2 || chooseType == 3 ){
+                astScript.wavy = true;
+            }
             if (oldScore + 20 < prog.secondsPassed)
             {
                 oldScore = prog.secondsPassed;
@@ -91,7 +102,7 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(rate);
+            yield return new WaitForSeconds(1f);
             spawnAsteroid();
         }
     }

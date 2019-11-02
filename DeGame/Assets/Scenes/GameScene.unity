@@ -1413,7 +1413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 399, y: 171}
+  m_AnchoredPosition: {x: 399.09, y: 170.63}
   m_SizeDelta: {x: 800, y: 450.05847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520146167
@@ -1981,6 +1981,8 @@ MonoBehaviour:
   asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}
   threeHitAsteroidPrefab: {fileID: 4762693616166160910, guid: d504da992ed7be54bb1f94ac2c01962b,
+    type: 3}
+  wavyAsteroidPrefab: {fileID: 4644393014859998898, guid: 89b5e4f723eef6d47b7047471aa979a9,
     type: 3}
   Asteroids: {fileID: 970131219}
   spriteList:
