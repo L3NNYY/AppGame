@@ -1984,6 +1984,8 @@ MonoBehaviour:
     type: 3}
   wavyAsteroidPrefab: {fileID: 4644393014859998898, guid: 89b5e4f723eef6d47b7047471aa979a9,
     type: 3}
+  largeAsteroidPrefab: {fileID: 4622793369173550050, guid: 87e214f3c6e91e347b7f238b7e795b47,
+    type: 3}
   Asteroids: {fileID: 970131219}
   spriteList:
   - {fileID: 21300000, guid: 762622004eb05ab4495d9c45e2d84e49, type: 3}

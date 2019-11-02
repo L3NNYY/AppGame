@@ -8,6 +8,7 @@ public class spawn_asteroid : MonoBehaviour
     public GameObject asteroidPrefab;
     public GameObject threeHitAsteroidPrefab;
     public GameObject wavyAsteroidPrefab;
+    public GameObject largeAsteroidPrefab;
     public GameObject Asteroids; // Parent to store all asteroid prefabs
     float asteroidSpeed = 1.25f;
     float rate = 2f;
@@ -42,6 +43,13 @@ public class spawn_asteroid : MonoBehaviour
             ast = Instantiate(wavyAsteroidPrefab) as GameObject;
             minimumScale = 0.01f;
             maximumScale = 0.03f;
+        }
+        else if (chooseType == 4)
+        {
+
+            ast = Instantiate(largeAsteroidPrefab) as GameObject;
+            minimumScale = 0.06f;
+            maximumScale = 0.07f;
         }
         else
         {
@@ -102,7 +110,7 @@ public class spawn_asteroid : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(rate);
             spawnAsteroid();
         }
     }
