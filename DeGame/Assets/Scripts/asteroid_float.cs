@@ -34,7 +34,6 @@ public class asteroid_float : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         //(float)Math.Sin(transform.position.x) * Time.deltaTime
         transform.rotation = rotation;
-        print(transform.rotation);
         absPosX = 0f;
         };
 

@@ -42,6 +42,5 @@ public class ThreeHitAsteroid : asteroid_float
                 }
             }
         }
-
     }
 }
