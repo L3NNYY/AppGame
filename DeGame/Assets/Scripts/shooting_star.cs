@@ -15,6 +15,7 @@ public class shooting_star : MonoBehaviour
 
     public RuntimeAnimatorController slowTimeAnim;
     public RuntimeAnimatorController nukeAnim;
+    public RuntimeAnimatorController shieldAnim;
     public bool isMoving = true;
     private int type;
     private Vector2 screenBounds;
@@ -33,7 +34,7 @@ public class shooting_star : MonoBehaviour
         collider = gameObject.GetComponent<CircleCollider2D>();
         powerups = GameObject.Find("Game Wrapper").GetComponent<powerups>();
         animator = this.GetComponent<Animator>();
-        int randomizer = random.Next(1, 3);
+        int randomizer = random.Next(1, 4);
         //renderer.sprite = 
         switch (randomizer)
         {
@@ -44,6 +45,10 @@ public class shooting_star : MonoBehaviour
             case 2:
                 type = 2;
                 animator.runtimeAnimatorController = slowTimeAnim;
+                break;
+            case 3:
+                type = 3;
+                animator.runtimeAnimatorController = shieldAnim;
                 break;
         }
     }
@@ -94,6 +99,10 @@ public class shooting_star : MonoBehaviour
                 else if (this.type == 2)
                 {
                     powerups.slowDownTime(this.gameObject);
+                }
+                else if (this.type == 3)
+                {
+                    powerups.shieldPowerUp(this.gameObject);
                 }
             }
         }

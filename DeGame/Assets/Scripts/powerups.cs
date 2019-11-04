@@ -8,6 +8,7 @@ public class powerups : MonoBehaviour
     protected Animation anim;
     public AudioClip asteroidExplosion;
     public AudioClip NukeExplosionSound;
+    public AudioClip ShieldEquipSound;
     bool powerup = false;
     float time, prevTime = 0f;
     bool flashing = true;
@@ -64,6 +65,20 @@ public class powerups : MonoBehaviour
         flashActive = true;
         flashing = true;
         Time.timeScale = 0.3f;
+    }
+
+    public void shieldPowerUp(GameObject activatorObj)
+    {
+        print("Shield Power Up Activated");
+        Destroy(activatorObj);
+        powerup = true;
+        time = 0f;
+        bool audioPlayed = false;
+        if (!audioPlayed)
+        {
+            audioPlayed = true;
+            AudioManager.instance.PlaySound(ShieldEquipSound, transform.position);
+        }
     }
 
     void flash()
