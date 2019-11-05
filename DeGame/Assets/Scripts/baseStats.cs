@@ -78,8 +78,12 @@ public class baseStats : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Enemy") && !godmode)
+        if (col.gameObject.tag.Equals("Enemy"))
         {
+            if(godmode){
+                Destroy(col.gameObject);
+                return;
+            }
             damageTime = 1f;
             hitAnimEnding = false;
             multiplier.resetStreakAndMultiplier();

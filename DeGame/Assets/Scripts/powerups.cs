@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class powerups : MonoBehaviour
@@ -9,33 +10,55 @@ public class powerups : MonoBehaviour
     public AudioClip asteroidExplosion;
     public AudioClip NukeExplosionSound;
     public AudioClip ShieldEquipSound;
+    public GameObject powerupTimer;
+    public GameObject powerupTimerText;
+    public GameObject Earth;
+    public Material MetalEarth;
+    Vector3 origTimerScale;
     bool powerup = false;
+    bool invincible = false;
+    float endTime = 2f; //time for the powerup to finish if it has a duration
     float time, prevTime = 0f;
     bool flashing = true;
     bool flashActive = false;
     // Update is called once per frame
     void Start()
     {
+        powerupTimer.SetActive(false);
+        powerupTimerText.SetActive(false);
         anim = gameObject.GetComponent<Animation>();
+        origTimerScale = powerupTimer.transform.localScale;
     }
 
     void Update()
     {
+        if(powerup || invincible){
+            powerupTimer.transform.localScale = Vector3.Lerp(origTimerScale,new Vector3(0f,1f,1f), time/endTime);
+            print(powerupTimer.transform.localScale);
+        }
         time += Time.deltaTime;
         if (flashActive)
         {
             flash();
         }
-        if(time > 2f && powerup){
+        if(time > endTime && powerup){
             Time.timeScale = 1f;
             powerup = false;
+            powerupTimer.SetActive(false);
+            powerupTimerText.SetActive(false);
+        }
+        if(time > endTime && invincible){
+            invincible = false;
+            Earth.GetComponent<Renderer>().material = Resources.Load(PlayerPrefs.GetString("planet_texture")) as Material;
+            Earth.GetComponent<baseStats>().godmode = false;
+            powerupTimerText.SetActive(false);
+            powerupTimer.SetActive(false);
         }
     }
     public void nukePowerUp(GameObject activatorObj)
     {
         activatorObj.GetComponent<Animator>().SetTrigger("Active");
         activatorObj.GetComponent<shooting_star>().isMoving = false;
-        powerup = true;
         flashActive = true;
         flashing = true;
         print("nuke activated");
@@ -62,9 +85,12 @@ public class powerups : MonoBehaviour
         Destroy(activatorObj);
         powerup = true;
         time = 0f;
+        endTime = 2f;
         flashActive = true;
         flashing = true;
         Time.timeScale = 0.3f;
+        powerupTimerText.SetActive(true);
+        powerupTimer.SetActive(true);
     }
 
     public void shieldPowerUp(GameObject activatorObj)
@@ -73,12 +99,18 @@ public class powerups : MonoBehaviour
         Destroy(activatorObj);
         powerup = true;
         time = 0f;
+        endTime = 10f;
         bool audioPlayed = false;
+        Earth.GetComponent<Renderer>().material = MetalEarth;
+        Earth.GetComponent<baseStats>().godmode = true;
+        invincible = true;
         if (!audioPlayed)
         {
             audioPlayed = true;
             AudioManager.instance.PlaySound(ShieldEquipSound, transform.position);
         }
+        powerupTimerText.SetActive(true);
+        powerupTimer.SetActive(true);
     }
 
     void flash()
