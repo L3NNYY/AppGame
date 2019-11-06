@@ -31,6 +31,7 @@ public class baseStats : MonoBehaviour
     bool firstTimeLoop = true;
     void Start()
     {
+        PlanetHitParticle.GetComponent<Renderer>().material = gameObject.GetComponent<Renderer>().material;
         PlanetHitParticle.Stop();
         PlayerPrefs.SetInt("coins_gained", 0);
         audioSource = GetComponent<AudioSource>();
@@ -53,9 +54,10 @@ public class baseStats : MonoBehaviour
         if (!scoreCountStopped && gameOver == true)
         {
             time += Time.unscaledDeltaTime;
-            if(time > 0.001f){
-            countUpScore(maxScore, deathScoreText.GetComponent<Text>());
-            time = 0f;
+            if (time > 0.001f)
+            {
+                countUpScore(maxScore, deathScoreText.GetComponent<Text>());
+                time = 0f;
             }
         }
         if (damageTime > 0)
@@ -80,18 +82,20 @@ public class baseStats : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Enemy"))
+        if (col.CompareTag("Enemy"))
         {
-            if(godmode){
+            if (godmode)
+            {
                 Destroy(col.gameObject);
                 return;
             }
+            PlanetHitParticle.transform.LookAt(col.transform.position);
+            PlanetHitParticle.Play();
             damageTime = 1f;
             hitAnimEnding = false;
             multiplier.resetStreakAndMultiplier();
             Destroy(col.gameObject);
             HealthBarScript.health -= 5;
-            PlanetHitParticle.Play();
             AudioManager.instance.PlaySound(earthExplosion, transform.position);
         }
 
@@ -144,32 +148,35 @@ public class baseStats : MonoBehaviour
     {
         if (score >= maxScore)
         {
-            if(firstTimeLoop){
-            audioSource.Stop();
-            audioSource.clip = highScoreReachedEffect;
-            audioSource.loop = false;
-            audioSource.Play(0);
-            firstTimeLoop = false;
-            coinsEarned.SetActive(true);
-            coinsEarned.GetComponent<Text>().text = "+" + PlayerPrefs.GetInt("coins_gained") + " coins";
+            if (firstTimeLoop)
+            {
+                audioSource.Stop();
+                audioSource.clip = highScoreReachedEffect;
+                audioSource.loop = false;
+                audioSource.Play(0);
+                firstTimeLoop = false;
+                coinsEarned.SetActive(true);
+                coinsEarned.GetComponent<Text>().text = "+" + PlayerPrefs.GetInt("coins_gained") + " coins";
             }
             PlayerPrefs.SetInt("coins_gained", 0);
-            if(maxScore > PlayerPrefs.GetInt("top_score") || highScoreCounter == true){
+            if (maxScore > PlayerPrefs.GetInt("top_score") || highScoreCounter == true)
+            {
                 counter += 0.02f;
                 highScoreCounter = true;
-                PlayerPrefs.SetInt("top_score",maxScore);
+                PlayerPrefs.SetInt("top_score", maxScore);
                 highScoreText.SetActive(true);
-                highScoreText.GetComponent<Text>().color = Color.Lerp(Color.white,Color.yellow,counter);
-                coinsEarned.GetComponent<Text>().color = Color.Lerp(Color.white,Color.yellow,counter);
-                if(counter >= 1.0f){
+                highScoreText.GetComponent<Text>().color = Color.Lerp(Color.white, Color.yellow, counter);
+                coinsEarned.GetComponent<Text>().color = Color.Lerp(Color.white, Color.yellow, counter);
+                if (counter >= 1.0f)
+                {
                     scoreCountStopped = true;
                 }
             }
             return;
         }
-        score+=5;
+        score += 5;
         scoreText.text = "" + score;
-        audioSource.pitch = Mathf.Lerp(0.7f, 1.7f, ((float)score/(float)maxScore));
+        audioSource.pitch = Mathf.Lerp(0.7f, 1.7f, ((float)score / (float)maxScore));
         audioSource.Play(0);
     }
 }

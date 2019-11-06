@@ -78,7 +78,9 @@ public class asteroid_float : MonoBehaviour
         inc.GetComponent<visual_increment>().showIncrement(this.gameObject.transform.position);
     }
 
-
+    public void ChangeTarget(Vector3 newTarget){
+        centre = newTarget;
+    }
     public void movement()
     {
         float x_velocity;
