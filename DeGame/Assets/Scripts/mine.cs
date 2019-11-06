@@ -8,7 +8,17 @@ public class mine : MonoBehaviour
     // Start is called before the first frame update
     int Health;
     public Text mineHealth;
+    public GameObject ParticleObject;
+    ParticleSystem mineExplosionParticle;
+    public AudioClip mineExplosionSound;
     bool placed;
+
+    void Start()
+    {
+        mineExplosionParticle = ParticleObject.GetComponent<ParticleSystem>();
+        mineExplosionParticle.Stop();
+    }
+
     public void MinePlaced()
     {
         Health = 9;
@@ -31,7 +41,16 @@ public class mine : MonoBehaviour
             mineHealth.text ="" + Health;
         }
         if(Health <= 0){
-            Destroy(this.gameObject);
+            mineExplosionParticle.Play();
+            GameObject mineExplosionParticleInstance = Instantiate(ParticleObject, transform.position, transform.rotation);
+            Destroy(mineExplosionParticleInstance, 3);
+            Destroy(this.gameObject, 0.2f);
+            bool audioPlayed = false;
+            if (!audioPlayed)
+            {
+                audioPlayed = true;
+                AudioManager.instance.PlaySound(mineExplosionSound, transform.position);
+            }
         }
 
         //StartCoroutine(Lerpin());

@@ -213,3 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mineHealth: {fileID: 3311507854997472195}
+  ParticleObject: {fileID: 1661932246425220588, guid: 6f7fd2e63df351140a867e71813a3bf7,
+    type: 3}
+  mineExplosionSound: {fileID: 8300000, guid: 906a7e85996b77e45bb81458ebf3a4e2, type: 3}
