@@ -19,6 +19,7 @@ public class baseStats : MonoBehaviour
     public GameObject coinsEarned;
     public GameObject highScoreText;
     public SpriteRenderer render;
+    public ParticleSystem PlanetHitParticle;
     public AudioClip countUpEffect;
     public AudioClip highScoreReachedEffect;
     ClickMultiplier multiplier;
@@ -30,6 +31,7 @@ public class baseStats : MonoBehaviour
     bool firstTimeLoop = true;
     void Start()
     {
+        PlanetHitParticle.Stop();
         PlayerPrefs.SetInt("coins_gained", 0);
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = countUpEffect;
@@ -89,6 +91,7 @@ public class baseStats : MonoBehaviour
             multiplier.resetStreakAndMultiplier();
             Destroy(col.gameObject);
             HealthBarScript.health -= 5;
+            PlanetHitParticle.Play();
             AudioManager.instance.PlaySound(earthExplosion, transform.position);
         }
 
