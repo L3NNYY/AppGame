@@ -14,6 +14,8 @@ public class powerups : MonoBehaviour
     public GameObject powerupTimerText;
     public GameObject Earth;
     public Material MetalEarth;
+    [SerializeField] private Image shieldIcon;
+    [SerializeField] private Image snailIcon;
     Vector3 origTimerScale;
     bool powerup = false;
     bool invincible = false;
@@ -28,6 +30,8 @@ public class powerups : MonoBehaviour
         powerupTimerText.SetActive(false);
         anim = gameObject.GetComponent<Animation>();
         origTimerScale = powerupTimer.transform.localScale;
+        shieldIcon.enabled = false;
+        snailIcon.enabled = false;
     }
 
     void Update()
@@ -46,6 +50,8 @@ public class powerups : MonoBehaviour
             powerup = false;
             powerupTimer.SetActive(false);
             powerupTimerText.SetActive(false);
+            snailIcon.enabled = false;
+            shieldIcon.enabled = false;
         }
         if(time > endTime && invincible){
             invincible = false;
@@ -53,6 +59,8 @@ public class powerups : MonoBehaviour
             Earth.GetComponent<baseStats>().godmode = false;
             powerupTimerText.SetActive(false);
             powerupTimer.SetActive(false);
+            snailIcon.enabled = false;
+            shieldIcon.enabled = false;
         }
     }
     public void nukePowerUp(GameObject activatorObj)
@@ -89,6 +97,7 @@ public class powerups : MonoBehaviour
         flashActive = true;
         flashing = true;
         Time.timeScale = 0.3f;
+        snailIcon.enabled = true;
         powerupTimerText.SetActive(true);
         powerupTimer.SetActive(true);
     }
@@ -104,6 +113,7 @@ public class powerups : MonoBehaviour
         Earth.GetComponent<Renderer>().material = MetalEarth;
         Earth.GetComponent<baseStats>().godmode = true;
         invincible = true;
+        shieldIcon.enabled = true;
         if (!audioPlayed)
         {
             audioPlayed = true;

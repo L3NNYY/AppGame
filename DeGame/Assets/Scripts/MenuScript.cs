@@ -26,6 +26,14 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("UnlocksScene");
     }
+    public void GoToLeaderboards()
+    {
+        SceneManager.LoadScene("LeaderboardsScene");
+    }
+    public void GoToSettings()
+    {
+        SceneManager.LoadScene("SettingsScene");
+    }
     public void OpenFacebook()
     {
         Application.OpenURL("https://www.facebook.com/");
