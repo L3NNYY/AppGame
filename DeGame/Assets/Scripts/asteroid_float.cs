@@ -46,7 +46,7 @@ public class asteroid_float : MonoBehaviour
         {
             movement();
         }
-        if (this.gameObject.tag.Equals("Enemy"))
+ /*        if (this.gameObject.tag.Equals("Enemy"))
         {
             if (click.collideChecker(collider, 5))
             {
@@ -54,7 +54,7 @@ public class asteroid_float : MonoBehaviour
                 DestroyAsteroid();
             }
 
-        }
+        } */
 
     }
 

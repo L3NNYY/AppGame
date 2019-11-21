@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ClickMultiplier : MonoBehaviour
 {
-    private bool hit;
+    private Stack hits;
     public Text multiText;
     public Text multiLabel;
     Vector3 originalMultiTextSize, origLabelSize;
@@ -96,23 +96,32 @@ public class ClickMultiplier : MonoBehaviour
     {
         return scoreMultiplier;
     }
-    public void BackgroundClick() //button click function
+    /*public void BackgroundClick() //button click function
     {
-        
-        if (Time.timeScale != 0f)
+        if (hits.Count != 0)
         {
-            if (hit == true)
-            {
-               // print("hit!");
-                hit = false;
-            }
-            else
-            {
-               //print("you missed!");
-                resetStreakAndMultiplier();
-            }
+            hits.Pop();
         }
-    }
+        else
+        {
+            resetStreakAndMultiplier();
+        }
+        */
+        //if (Time.timeScale != 0f)
+        //{
+        //    hits.Push("CLICK");
+        //    if (hits.Count != 0)
+        //    {
+        //        print("hit!");
+        //        //hit = false;
+        //    }
+        //    else
+        //    {
+        //       print("you missed!");
+        //        resetStreakAndMultiplier();
+        //    }
+        //}
+    //}
     public void resetStreakAndMultiplier()
     {
         hideMultiplier = true;
@@ -121,6 +130,6 @@ public class ClickMultiplier : MonoBehaviour
     }
     public void hitSetter()
     {
-        hit = true;
+        hits.Push("CLICK!");
     }
 }

@@ -38,7 +38,7 @@ public class powerups : MonoBehaviour
     {
         if(powerup || invincible){
             powerupTimer.transform.localScale = Vector3.Lerp(origTimerScale,new Vector3(0f,1f,1f), time/endTime);
-            print(powerupTimer.transform.localScale);
+           // print(powerupTimer.transform.localScale);
         }
         time += Time.deltaTime;
         if (flashActive)

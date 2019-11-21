@@ -37,14 +37,14 @@ public class spawn_asteroid : MonoBehaviour
             minimumScale = 0.06f;
             maximumScale = 0.1f;
         }
-        else if (chooseType == 2 || chooseType == 3)
+        else if (chooseType == 99 || chooseType == 93)
         {
 
             ast = Instantiate(wavyAsteroidPrefab) as GameObject;
             minimumScale = 0.01f;
             maximumScale = 0.03f;
         }
-        else if (chooseType == 4)
+        else if (chooseType == 9999)
         {
 
             ast = Instantiate(largeAsteroidPrefab) as GameObject;
@@ -67,7 +67,7 @@ public class spawn_asteroid : MonoBehaviour
             ProgressScript prog = gameObject.GetComponent<ProgressScript>(); //Gets the game score from progress script
                                                                              //TODO: this area will most likely simplify upon a major revamp, getting components together
                                                                              //such as spawn_asteroids shouldn't be in camera, but in Game Wrapper - This can happen later
-            if(chooseType == 2 || chooseType == 3 ){
+            if(chooseType == 99 || chooseType == 93 ){
                 astScript.wavy = true;
             }
             if (oldScore + 20 < prog.secondsPassed)
