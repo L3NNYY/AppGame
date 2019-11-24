@@ -36,16 +36,18 @@ public class powerups : MonoBehaviour
 
     void Update()
     {
-        if(powerup || invincible){
-            powerupTimer.transform.localScale = Vector3.Lerp(origTimerScale,new Vector3(0f,1f,1f), time/endTime);
-           // print(powerupTimer.transform.localScale);
+        if (powerup || invincible)
+        {
+            powerupTimer.transform.localScale = Vector3.Lerp(origTimerScale, new Vector3(0f, 1f, 1f), time / endTime);
+            // print(powerupTimer.transform.localScale);
         }
         time += Time.deltaTime;
         if (flashActive)
         {
             flash();
         }
-        if(time > endTime && powerup){
+        if (time > endTime && powerup)
+        {
             Time.timeScale = 1f;
             powerup = false;
             powerupTimer.SetActive(false);
@@ -53,7 +55,8 @@ public class powerups : MonoBehaviour
             snailIcon.enabled = false;
             shieldIcon.enabled = false;
         }
-        if(time > endTime && invincible){
+        if (time > endTime && invincible)
+        {
             invincible = false;
             Earth.GetComponent<Renderer>().material = Resources.Load(PlayerPrefs.GetString("planet_texture")) as Material;
             Earth.GetComponent<baseStats>().godmode = false;
@@ -88,7 +91,8 @@ public class powerups : MonoBehaviour
         }
     }
 
-    public void slowDownTime(GameObject activatorObj){
+    public void slowDownTime(GameObject activatorObj)
+    {
         print("Slow Down Time Activated");
         Destroy(activatorObj);
         powerup = true;

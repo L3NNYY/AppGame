@@ -17,6 +17,11 @@ public class CollisionChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //mouseControl();
+        touchControl();//use touchControl for touch displays
+    }
+    public void touchControl()
+    {
         for (int i = 0; i < Input.touchCount; i++)
         {
 
@@ -24,17 +29,59 @@ public class CollisionChecker : MonoBehaviour
             {
                 Vector2 touchCoordinates = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
                 GameObject[] listOfAsteroid = GameObject.FindGameObjectsWithTag("Enemy");
+                GameObject[] powerUps = GameObject.FindGameObjectsWithTag("PowerUP");
                 bool found = false;
+                print(i + " " + Input.touches[i].phase + Camera.main.ScreenToWorldPoint(Input.touches[i].position));
                 foreach (GameObject asteroid in listOfAsteroid)
                 {
                     CircleCollider2D myCollider = asteroid.gameObject.GetComponent<CircleCollider2D>();
                     if (myCollider.OverlapPoint(touchCoordinates))
                     {
-                        asteroid_float myScript = asteroid.GetComponent<asteroid_float>();
+                        // was originally going to select asteroid type based on their script type, but wavy asteroid and regular
+                        // asteroids are using the same script
+                        if (asteroid.name.Equals("asteroid(Clone)"))
+                        {
+                            asteroid_float myScript = asteroid.GetComponent<asteroid_float>();
+                            myScript.hit();
+                            found = true;
+                        }
+                        else if (asteroid.name.Equals("threeHitAsteroid(Clone)"))
+                        {
+                            ThreeHitAsteroid threeHitAst = asteroid.GetComponent<ThreeHitAsteroid>();
+                            threeHitAst.hit();
+                            found = true;
+                        }
+                        else if (asteroid.name.Equals("large asteroid(Clone)"))
+                        {
+                            large_asteroid la = asteroid.GetComponent<large_asteroid>();
+                            la.StartSpawn();
+                            found = true;
+                        }
+                        else if (asteroid.name.Equals("wavy_asteroid(Clone)"))
+                        {
+                            asteroid_float myScript = asteroid.GetComponent<asteroid_float>();
+                            myScript.hit();
+                            found = true;
+                        }
+
+
+                        if (found == true)
+                        {
+                            progress.addScore(5 * multiplier.getScoreMultiplier());
+                            multiplier.IncrementStreak();
+                            break;
+                        }
+                    }
+                }
+                foreach (GameObject powerUp in powerUps)
+                {
+                    CircleCollider2D myCollider = powerUp.gameObject.GetComponent<CircleCollider2D>();
+                    if (myCollider.OverlapPoint(touchCoordinates))
+                    {
+                        shooting_star script = powerUp.GetComponent<shooting_star>();
+                        script.onClick();
                         progress.addScore(5 * multiplier.getScoreMultiplier());
                         multiplier.IncrementStreak();
-                        myScript.DestroyAsteroid();
-                        asteroid.gameObject.tag = "Animation";
                         found = true;
                         break;
                     }
@@ -42,27 +89,80 @@ public class CollisionChecker : MonoBehaviour
                 if (found == false)
                 {
                     multiplier.resetStreakAndMultiplier();
-                   // print("that missed!");
 
-                    //reset streak
                 }
-                //   print(listOfAsteroid);
-                //    print(i + " " + Input.touches[i].phase + Camera.main.ScreenToWorldPoint(Input.touches[i].position));
-                //if (OverlapPoint(Camera.main.ScreenToWorldPoint(Input.touches[i].position)))
-                // {
-                // progress.addScore(points * multiplier.getScoreMultiplier());
-                //multiplier.IncrementStreak();
-                //multiplier.hitSetter();
-
-                // }
             }
-            /*         Plan of reconstruction:
-                    When button is clicked, get list of all asteroid objects
-             Check if any hitboxes match position of finger
-             If so set found = true and break
-             If found == true incremeant streak and destroy object
-             Else reset streak
-             */
+
+        }
+
+    }
+    public void mouseControl()
+    {
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
+        {
+            GameObject[] listOfAsteroid = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] powerUps = GameObject.FindGameObjectsWithTag("PowerUP");
+            bool found = false;
+            foreach (GameObject asteroid in listOfAsteroid)
+            {
+                CircleCollider2D myCollider = asteroid.gameObject.GetComponent<CircleCollider2D>();
+                if (myCollider.OverlapPoint(mousePos))
+                {
+                    // was originally going to select asteroid type based on their script type, but wavy asteroid and regular
+                    // asteroids are using the same script
+                    if (asteroid.name.Equals("asteroid(Clone)"))
+                    {
+                        asteroid_float myScript = asteroid.GetComponent<asteroid_float>();
+                        myScript.hit();
+                        found = true;
+                    }
+                    else if (asteroid.name.Equals("threeHitAsteroid(Clone)"))
+                    {
+                        ThreeHitAsteroid threeHitAst = asteroid.GetComponent<ThreeHitAsteroid>();
+                        threeHitAst.hit();
+                        found = true;
+                    }
+                    else if (asteroid.name.Equals("large asteroid(Clone)"))
+                    {
+                        large_asteroid la = asteroid.GetComponent<large_asteroid>();
+                        la.StartSpawn();
+                        found = true;
+                    }
+                    else if (asteroid.name.Equals("wavy_asteroid(Clone)"))
+                    {
+                        asteroid_float myScript = asteroid.GetComponent<asteroid_float>();
+                        myScript.hit();
+                        found = true;
+                    }
+
+
+                    if (found == true)
+                    {
+                        progress.addScore(5 * multiplier.getScoreMultiplier());
+                        multiplier.IncrementStreak();
+                        break;
+                    }
+                }
+            }
+            foreach (GameObject powerUp in powerUps)
+            {
+                CircleCollider2D myCollider = powerUp.gameObject.GetComponent<CircleCollider2D>();
+                if (myCollider.OverlapPoint(mousePos))
+                {
+                    shooting_star script = powerUp.GetComponent<shooting_star>();
+                    script.onClick();
+                    progress.addScore(5 * multiplier.getScoreMultiplier());
+                    multiplier.IncrementStreak();
+                    found = true;
+                    break;
+                }
+            }
+            if (found == false)
+            {
+                multiplier.resetStreakAndMultiplier();
+            }
         }
     }
 }

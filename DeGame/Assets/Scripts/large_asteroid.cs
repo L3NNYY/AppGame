@@ -26,17 +26,11 @@ public class large_asteroid : asteroid_float
         {
             movement();
         }
-        if (this.gameObject.tag.Equals("Enemy"))
-        {
-            if (click.collideChecker(collider, 5))
-            {
-                StartSpawn();
-            }
-        }
     }
 
     public void StartSpawn()
     {
+        this.tag = "Animation";
         speed = 0.1f;
         StartCoroutine(SpawnAsteroids(counter));
     }

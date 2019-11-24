@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThreeHitAsteroid : asteroid_float
 {
     // Start is called before the first frame update
-    int counter = 0;
+    public int counter = 0;
     public Sprite nohit;
     public Sprite hit1;
     public Sprite hit2;
@@ -14,7 +14,7 @@ public class ThreeHitAsteroid : asteroid_float
 
     protected override void Start()
     {
-        textures = new Sprite[]{nohit, hit1, hit2};
+        textures = new Sprite[] { nohit, hit1, hit2 };
         base.Start();
         anim.enabled = false;
     }
@@ -26,21 +26,21 @@ public class ThreeHitAsteroid : asteroid_float
         {
             movement();
         }
-        if (this.gameObject.tag.Equals("Enemy"))
+
+    }
+    public override void hit()
+    {
+        if (counter == 2)
         {
-            if (click.collideChecker(collider, 5))
-            {
-                if (counter == 2)
-                {
-                    this.gameObject.tag = "Animation";
-                    DestroyAsteroid();
-                }
-                else
-                {
-                    counter += 1;
-                    asteroid.sprite = textures[counter];
-                }
-            }
+            this.gameObject.tag = "Animation";
+            DestroyAsteroid();
+        }
+        else
+        {
+            counter += 1;
+            asteroid.sprite = textures[counter];
+
         }
     }
+
 }

@@ -33,22 +33,25 @@ public class ClickMultiplier : MonoBehaviour
     {
         multiText.transform.position = shakeObject(streak * 2);
 
-        if(showMultiplier){
+        if (showMultiplier)
+        {
             animMultiplier(false);
         }
-        if(hideMultiplier){
+        if (hideMultiplier)
+        {
             animMultiplier(hideMultiplier);
         }
     }
     public void IncrementStreak()
     {
-        float sizeIncrement = (float)streak/5f;
+        float sizeIncrement = (float)streak / 5f;
         streak += 1;
-        multiText.color = Color.Lerp(Color.white,Color.red,sizeIncrement);
-        multiText.transform.localScale = Vector3.Lerp(originalMultiTextSize,new Vector3(2f,2f,1.46f), sizeIncrement);
+        multiText.color = Color.Lerp(Color.white, Color.red, sizeIncrement);
+        multiText.transform.localScale = Vector3.Lerp(originalMultiTextSize, new Vector3(2f, 2f, 1.46f), sizeIncrement);
         handleStreak();
     }
-    private Vector3 shakeObject(int shakeIntensity){
+    private Vector3 shakeObject(int shakeIntensity)
+    {
         Vector3 newPos = origPos;
         newPos.y = Random.Range(origPos.y, origPos.y + (float)shakeIntensity);
         newPos.x = Random.Range(origPos.x, origPos.x + (float)shakeIntensity);
@@ -64,28 +67,34 @@ public class ClickMultiplier : MonoBehaviour
             multiText.color = Color.white;
             multiText.transform.localScale = originalMultiTextSize;
 
-            if(multiText.gameObject.activeSelf == false){
+            if (multiText.gameObject.activeSelf == false)
+            {
                 showMultiplier = true;
             }
         }
     }
 
-    void animMultiplier(bool hide){
+    void animMultiplier(bool hide)
+    {
         animTime += Time.deltaTime * 3;
-        if(hide){
-            multiText.transform.localScale = Vector3.Lerp(originalMultiTextSize, new Vector3(0.1f,0.1f,0.1f), animTime);
-            multiLabel.transform.localScale = Vector3.Lerp(origLabelSize, new Vector3(0.1f,0.1f,0.1f), animTime);
+        if (hide)
+        {
+            multiText.transform.localScale = Vector3.Lerp(originalMultiTextSize, new Vector3(0.1f, 0.1f, 0.1f), animTime);
+            multiLabel.transform.localScale = Vector3.Lerp(origLabelSize, new Vector3(0.1f, 0.1f, 0.1f), animTime);
         }
-        else{
+        else
+        {
             multiLabel.gameObject.SetActive(true);
             multiText.gameObject.SetActive(true);
-            multiText.transform.localScale = Vector3.Lerp(new Vector3(0.1f,0.1f,0.1f),originalMultiTextSize, animTime);
-            multiLabel.transform.localScale = Vector3.Lerp(new Vector3(0.1f,0.1f,0.1f),origLabelSize, animTime);
+            multiText.transform.localScale = Vector3.Lerp(new Vector3(0.1f, 0.1f, 0.1f), originalMultiTextSize, animTime);
+            multiLabel.transform.localScale = Vector3.Lerp(new Vector3(0.1f, 0.1f, 0.1f), origLabelSize, animTime);
         }
-        if(animTime >= 1f){
+        if (animTime >= 1f)
+        {
             animTime = 0;
             showMultiplier = false;
-            if(hide){
+            if (hide)
+            {
                 multiLabel.gameObject.SetActive(false);
                 multiText.gameObject.SetActive(false);
                 hideMultiplier = false;
@@ -107,29 +116,25 @@ public class ClickMultiplier : MonoBehaviour
             resetStreakAndMultiplier();
         }
         */
-        //if (Time.timeScale != 0f)
-        //{
-        //    hits.Push("CLICK");
-        //    if (hits.Count != 0)
-        //    {
-        //        print("hit!");
-        //        //hit = false;
-        //    }
-        //    else
-        //    {
-        //       print("you missed!");
-        //        resetStreakAndMultiplier();
-        //    }
-        //}
+    //if (Time.timeScale != 0f)
+    //{
+    //    hits.Push("CLICK");
+    //    if (hits.Count != 0)
+    //    {
+    //        print("hit!");
+    //        //hit = false;
+    //    }
+    //    else
+    //    {
+    //       print("you missed!");
+    //        resetStreakAndMultiplier();
+    //    }
+    //}
     //}
     public void resetStreakAndMultiplier()
     {
-        hideMultiplier = true;
-        streak = 0;
-        scoreMultiplier = 1;
-    }
-    public void hitSetter()
-    {
-        hits.Push("CLICK!");
+            hideMultiplier = true;
+            streak = 0;
+            scoreMultiplier = 1;
     }
 }

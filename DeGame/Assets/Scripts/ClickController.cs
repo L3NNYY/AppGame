@@ -26,7 +26,7 @@ public class ClickController : MonoBehaviour
             {
                 progress.addScore(points * multiplier.getScoreMultiplier());
                 multiplier.IncrementStreak();
-                multiplier.hitSetter();
+            //    multiplier.hitSetter();
                 return true;
             }
         }
@@ -48,7 +48,7 @@ public class ClickController : MonoBehaviour
                 {
                     progress.addScore(points * multiplier.getScoreMultiplier());
                     multiplier.IncrementStreak();
-                    multiplier.hitSetter();
+                //    multiplier.hitSetter();
                     return true;
 
                 }

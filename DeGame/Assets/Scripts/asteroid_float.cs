@@ -28,13 +28,14 @@ public class asteroid_float : MonoBehaviour
         collider = gameObject.GetComponent<CircleCollider2D>();
         anim = gameObject.GetComponent<Animator>();
         centre = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z));
-        if(wavy){
-        Vector2 earthPos = GameObject.Find("3D Earth").transform.position - transform.position;
-        float angle = Mathf.Atan2(earthPos.y, earthPos.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //(float)Math.Sin(transform.position.x) * Time.deltaTime
-        transform.rotation = rotation;
-        absPosX = 0f;
+        if (wavy)
+        {
+            Vector2 earthPos = GameObject.Find("3D Earth").transform.position - transform.position;
+            float angle = Mathf.Atan2(earthPos.y, earthPos.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //(float)Math.Sin(transform.position.x) * Time.deltaTime
+            transform.rotation = rotation;
+            absPosX = 0f;
         };
 
     }
@@ -46,16 +47,6 @@ public class asteroid_float : MonoBehaviour
         {
             movement();
         }
- /*        if (this.gameObject.tag.Equals("Enemy"))
-        {
-            if (click.collideChecker(collider, 5))
-            {
-                this.gameObject.tag = "Animation";
-                DestroyAsteroid();
-            }
-
-        } */
-
     }
 
     public void DestroyAsteroid()
@@ -78,7 +69,8 @@ public class asteroid_float : MonoBehaviour
         inc.GetComponent<visual_increment>().showIncrement(this.gameObject.transform.position);
     }
 
-    public void ChangeTarget(Vector3 newTarget){
+    public void ChangeTarget(Vector3 newTarget)
+    {
         centre = newTarget;
     }
     public void movement()
@@ -128,7 +120,13 @@ public class asteroid_float : MonoBehaviour
         {
             x_velocity = speed;
             absPosX += x_velocity * Time.deltaTime;
-            transform.Translate(x_velocity * Time.deltaTime,(float)Math.Sin(absPosX* zigFreq) * Time.deltaTime * zigSize, 0f, Space.Self);
+            transform.Translate(x_velocity * Time.deltaTime, (float)Math.Sin(absPosX * zigFreq) * Time.deltaTime * zigSize, 0f, Space.Self);
         }
+    }
+    public virtual void hit()
+    {
+
+        this.gameObject.tag = "Animation";
+        DestroyAsteroid();
     }
 }

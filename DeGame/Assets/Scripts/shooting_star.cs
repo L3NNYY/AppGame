@@ -57,7 +57,7 @@ public class shooting_star : MonoBehaviour
 
     void Update()
     {
-        onClick();
+        //onClick();
         moving();
         if (transform.position.x > 12.5f && startingPos.Equals("left") || transform.position.x < -12.5f && startingPos.Equals("right")) //destroyed once out of map
         {
@@ -85,26 +85,21 @@ public class shooting_star : MonoBehaviour
         rotate();
 
     }
-    void onClick()
+    public void onClick()
     {
-        if (this.gameObject.tag.Equals("PowerUP"))
+
+        this.gameObject.tag = "Animation";
+        if (this.type == 1)
         {
-            if (click.collideChecker(collider, 30))
-            {
-                this.gameObject.tag = "Animation";
-                if (this.type == 1)
-                {         
-                    powerups.nukePowerUp(this.gameObject);
-                }
-                else if (this.type == 2)
-                {
-                    powerups.slowDownTime(this.gameObject);
-                }
-                else if (this.type == 3)
-                {
-                    powerups.shieldPowerUp(this.gameObject);
-                }
-            }
+            powerups.nukePowerUp(this.gameObject);
+        }
+        else if (this.type == 2)
+        {
+            powerups.slowDownTime(this.gameObject);
+        }
+        else if (this.type == 3)
+        {
+            powerups.shieldPowerUp(this.gameObject);
         }
     }
     void moving()
@@ -118,7 +113,7 @@ public class shooting_star : MonoBehaviour
         float a = System.Math.Abs(this.transform.position.x - destination.x);
         float b = System.Math.Abs(this.transform.position.y - destination.y);
         float calc = (float)Math.Sqrt(a * a + b * b);
-        if (destination.x> transform.position.x)
+        if (destination.x > transform.position.x)
         {
             x_velocity = (a / calc) * speed;
         }
