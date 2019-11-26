@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CollisionChecker : MonoBehaviour
 {
     GameObject gameWrapper;
     ProgressScript progress;
     ClickMultiplier multiplier;
+    public GameObject ButtonGameObject;
+    public GameObject[] Buttons;
     void Start()
     {
+        Buttons = GameObject.FindGameObjectsWithTag("Button");
         gameWrapper = GameObject.Find("Game Wrapper");
         progress = gameWrapper.GetComponent<ProgressScript>();
         multiplier = gameWrapper.GetComponent<ClickMultiplier>();
@@ -17,15 +21,21 @@ public class CollisionChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         //mouseControl();
+
         touchControl();//use touchControl for touch displays
+
+
+
     }
     public void touchControl()
     {
         for (int i = 0; i < Input.touchCount; i++)
         {
 
-            if (Input.touches[i].phase == TouchPhase.Began)
+            if (Input.touches[i].phase == TouchPhase.Began && checkIfButtonsHit() == false && Time.timeScale != 0f)
             {
                 Vector2 touchCoordinates = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
                 GameObject[] listOfAsteroid = GameObject.FindGameObjectsWithTag("Enemy");
@@ -100,7 +110,7 @@ public class CollisionChecker : MonoBehaviour
     {
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0f && checkIfButtonsHit() == false)
         {
             GameObject[] listOfAsteroid = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] powerUps = GameObject.FindGameObjectsWithTag("PowerUP");
@@ -164,6 +174,17 @@ public class CollisionChecker : MonoBehaviour
                 multiplier.resetStreakAndMultiplier();
             }
         }
+    }
+    public bool checkIfButtonsHit()
+    {
+        foreach (GameObject button in Buttons)
+        {
+            if (EventSystem.current.currentSelectedGameObject == button)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

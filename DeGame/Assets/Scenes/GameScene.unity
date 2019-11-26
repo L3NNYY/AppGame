@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResumeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,6 +1264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,6 +1469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049214, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4081891299144765653, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
@@ -1744,6 +1759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7cbd67a47849224e8450a1420cfe302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ButtonGameObject: {fileID: 1482589623}
+  Buttons: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,6 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingstar: {fileID: 8611491649029586433, guid: 0599d66502940164e9f67eeb536961bd,
     type: 3}
+  Asteroids: {fileID: 0}
 --- !u!114 &649533093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2508,6 +2526,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
@@ -3142,6 +3165,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayAgain
       objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3713,6 +3741,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuteButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
+      objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3912,7 +3945,7 @@ GameObject:
   - component: {fileID: 1430277197}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5259,6 +5292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081891301047049201, guid: fc6f7c028dfef854a824a96431c40743,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
