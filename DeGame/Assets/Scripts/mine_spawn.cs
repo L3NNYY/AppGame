@@ -84,4 +84,8 @@ public class mine_spawn : MonoBehaviour
 
         }
     }
+    public bool checkIfMineDragged()
+    {
+        return minePlacement;
+    }
 }

@@ -8,10 +8,13 @@ public class CollisionChecker : MonoBehaviour
     GameObject gameWrapper;
     ProgressScript progress;
     ClickMultiplier multiplier;
+    private mine_spawn mine_spawn_script;
     public GameObject ButtonGameObject;
     public GameObject[] Buttons;
     void Start()
     {
+
+        mine_spawn_script = GameObject.Find("MineButton").GetComponent<mine_spawn>();
         Buttons = GameObject.FindGameObjectsWithTag("Button");
         gameWrapper = GameObject.Find("Game Wrapper");
         progress = gameWrapper.GetComponent<ProgressScript>();
@@ -22,11 +25,13 @@ public class CollisionChecker : MonoBehaviour
     void Update()
     {
 
+        if (!mine_spawn_script.checkIfMineDragged())
+        {
 
-        //mouseControl();
+            mouseControl();
 
-        touchControl();//use touchControl for touch displays
-
+            //touchControl();//use touchControl for touch displays
+        }
 
 
     }

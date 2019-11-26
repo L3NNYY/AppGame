@@ -9,7 +9,6 @@ public class shooting_star : MonoBehaviour
     //Animator anim;
     Vector2 mousePos;
     new CircleCollider2D collider;
-    ClickController click;
     powerups powerups;
     System.Random random = new System.Random();
 
@@ -29,7 +28,6 @@ public class shooting_star : MonoBehaviour
 
     void Start()
     {
-        click = gameObject.AddComponent<ClickController>();
         spawnCords();
         collider = gameObject.GetComponent<CircleCollider2D>();
         powerups = GameObject.Find("Game Wrapper").GetComponent<powerups>();

@@ -10,7 +10,6 @@ public class asteroid_float : MonoBehaviour
     Vector2 centre;
     protected Animator anim;
     protected new CircleCollider2D collider;
-    protected ClickController click;
     public Text coin_increment;
     public AudioClip asteroidExplosion;
     public bool wavy = false;
@@ -24,7 +23,6 @@ public class asteroid_float : MonoBehaviour
     protected virtual void Start()
     {
         coin = gameObject.AddComponent<coins>();
-        click = gameObject.AddComponent<ClickController>();
         collider = gameObject.GetComponent<CircleCollider2D>();
         anim = gameObject.GetComponent<Animator>();
         centre = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z));
