@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4644393014859998898
+--- !u!1 &5056656536060168141
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4644393014859998905}
-  - component: {fileID: 4644393014859998910}
-  - component: {fileID: 4644393014859998908}
-  - component: {fileID: 4644393014859998909}
-  - component: {fileID: 4644393014859998907}
-  - component: {fileID: 7893112465349126913}
+  - component: {fileID: 1228412526765042334}
+  - component: {fileID: 7468910329090129161}
+  - component: {fileID: 2359997225962620645}
+  - component: {fileID: 8407173947102130752}
+  - component: {fileID: 5383125554218736758}
+  - component: {fileID: 4499910002713977650}
   m_Layer: 0
   m_Name: wavy_asteroid
   m_TagString: Enemy
@@ -21,27 +21,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4644393014859998905
+--- !u!4 &1228412526765042334
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 2.1, z: 0}
+  m_LocalPosition: {x: -4.215, y: 2.176, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4644393014859998910
+--- !u!212 &7468910329090129161
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,14 +84,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4644393014859998908
+--- !u!95 &2359997225962620645
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 89db0add24c7f0647acf55765d6e54ac, type: 2}
@@ -103,13 +103,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &4644393014859998909
+--- !u!58 &8407173947102130752
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -118,15 +118,15 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8.1
---- !u!50 &4644393014859998907
+  m_Radius: 10
+--- !u!50 &5383125554218736758
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -140,13 +140,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7893112465349126913
+--- !u!114 &4499910002713977650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644393014859998898}
+  m_GameObject: {fileID: 5056656536060168141}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 245be05697fc07a48aead250bfba16cc, type: 3}
@@ -155,4 +155,5 @@ MonoBehaviour:
   coin_increment: {fileID: 2913019131955556966, guid: fe1d0f2f78bf421499b9c31df4439be6,
     type: 3}
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
+  wavy: 0
   speed: 0
