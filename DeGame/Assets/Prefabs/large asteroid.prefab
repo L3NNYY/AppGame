@@ -157,5 +157,5 @@ MonoBehaviour:
   asteroidExplosion: {fileID: 8300000, guid: 2327f6f96d358eb4d987a7cc4e8828fc, type: 3}
   wavy: 0
   speed: 0
-  asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
+  asteroidPrefab: {fileID: 295925986887375167, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}

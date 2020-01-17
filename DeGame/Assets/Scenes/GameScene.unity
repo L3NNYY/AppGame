@@ -1509,7 +1509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &458783891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1996,10 +1996,10 @@ RectTransform:
   m_Father: {fileID: 114464132}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 562, y: 200.79}
-  m_SizeDelta: {x: 272.8, y: 162.9}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 203.7, y: 2.8499}
+  m_SizeDelta: {x: 272.8, y: 162.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548373931
 MonoBehaviour:
@@ -2455,7 +2455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingstar: {fileID: 8611491649029586433, guid: 0599d66502940164e9f67eeb536961bd,
     type: 3}
-  Asteroids: {fileID: 0}
+  Asteroids: {fileID: 970131219}
 --- !u!114 &649533093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,11 +2468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318e9cb8fc1b4db4b843ac4ce4a3b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 1678885248550620589, guid: 55d7701107007d4438e5f49a972a706f,
+  asteroidPrefab: {fileID: 295925986887375167, guid: 55d7701107007d4438e5f49a972a706f,
     type: 3}
   threeHitAsteroidPrefab: {fileID: 4762693616166160910, guid: d504da992ed7be54bb1f94ac2c01962b,
     type: 3}
-  wavyAsteroidPrefab: {fileID: 4644393014859998898, guid: 89b5e4f723eef6d47b7047471aa979a9,
+  wavyAsteroidPrefab: {fileID: 5056656536060168141, guid: 89b5e4f723eef6d47b7047471aa979a9,
     type: 3}
   largeAsteroidPrefab: {fileID: 4622793369173550050, guid: 87e214f3c6e91e347b7f238b7e795b47,
     type: 3}
@@ -3805,12 +3805,12 @@ PrefabInstance:
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 408.6
+      value: 8.600006
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 148.4
+      value: -71.600006
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
@@ -3825,22 +3825,22 @@ PrefabInstance:
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4081891301047049200, guid: fc6f7c028dfef854a824a96431c40743,
         type: 3}
