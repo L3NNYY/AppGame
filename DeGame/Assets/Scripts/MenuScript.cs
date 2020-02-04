@@ -26,9 +26,9 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("UnlocksScene");
     }
-    public void GoToLeaderboards()
+    public void GoToGuide()
     {
-        SceneManager.LoadScene("LeaderboardsScene");
+        SceneManager.LoadScene("Guide");
     }
     public void GoToSettings()
     {

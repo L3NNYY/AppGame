@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 51.8, y: 8.8}
+  m_AnchoredPosition: {x: 51.80005, y: 8.800003}
   m_SizeDelta: {x: 160, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174945181
@@ -1868,7 +1868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -47.5, y: 9.1}
+  m_AnchoredPosition: {x: -47.5, y: 9.099998}
   m_SizeDelta: {x: 160, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792856862
@@ -1915,7 +1915,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1869191301}
-        m_MethodName: GoToLeaderboards
+        m_MethodName: GoToGuide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1976,6 +1976,7 @@ GameObject:
   - component: {fileID: 1869191300}
   - component: {fileID: 1869191301}
   - component: {fileID: 1869191302}
+  - component: {fileID: 1869191303}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2006,10 +2007,10 @@ RectTransform:
   m_Father: {fileID: 1978688602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.7000122, y: 0}
-  m_SizeDelta: {x: -1393.9, y: 217}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.6999512, y: 0}
+  m_SizeDelta: {x: 206.09998, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869191301
 MonoBehaviour:
@@ -2119,6 +2120,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!223 &1869191303
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869191299}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1978688598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,8 +2151,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1978688602}
   - component: {fileID: 1978688601}
-  - component: {fileID: 1978688600}
   - component: {fileID: 1978688599}
+  - component: {fileID: 1978688600}
   m_Layer: 5
   m_Name: Menu UI
   m_TagString: Untagged
